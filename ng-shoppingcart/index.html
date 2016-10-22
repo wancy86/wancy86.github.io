@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>京东购物</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="shoppingCartCtrl">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <h3>请在web server下查看</h3> -->
+            <h3>AngularJS教程 - 购物车</h3>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>{{title}}</h3>
+                <div ng-repeat="good in goods">
+                    <div style="border: 1px solid #ccc;overflow: hidden;">
+                        <img style="height:200px;width:200px;" ng-src="{{good.imgUrl}}" />
+                        <span>{{good.name}}</span>
+                        <span>￥{{good.price}}</span>
+                        <button ng-click="addtoCart($index)">加入购物车</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" ng-show="totalPrice()!=0">
+                <h3>我的购物车</h3>
+                <div ng-repeat="c in cart | orderBy:'good.name'">
+                    <div style="border: 1px solid #ccc;">
+                        <img style="height:100px;width:100px;" ng-src="{{c.good.imgUrl}}" />
+                        <span>{{c.good.name}}</span>
+                        <input type="text" ng-model="c.number" />
+                        <span>￥{{c.good.price*c.number}}</span>
+                        <button ng-click="delFromCart($index)">移出购物车</button>
+                    </div>
+                </div>
+                <div class="col-md-12" style="text-align:right">
+                    <b>Totoal:</b>{{totalPrice()}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
