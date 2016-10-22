@@ -54,7 +54,7 @@ angular.module('myapp', [])
 
     $scope.delFromCart = function(index) {
         console.log('delFromCart:', index);
-        var good = $scope.goods[index];
+        var good = $scope.cart[index].good;
         $scope.cart = $filter('filter')($scope.cart, function(value) {
             return value.good.name != good.name;
         });
