@@ -9,7 +9,7 @@ angular.module('myapp', [])
     $scope.title = "京东商城";
     $scope.goods = [{
         name: "apple",
-        price: 29.9,
+        price: 29,
         imgUrl: "http://img13.360buyimg.com/n0/jfs/t274/83/2090217694/98857/a305ee1b/5450e819Nb4f4ada9.jpg"
     }, {
         name: "orange",
