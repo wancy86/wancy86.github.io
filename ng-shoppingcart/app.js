@@ -48,7 +48,7 @@ angular.module('myapp', [])
             });
             $scope.cart.push(added);
         }
-        $scope.cart = $scope.cart.sort();
+        $scope.cart = $filter('orderBy')($scope.cart,'good.name');
         console.log('scope.cart2:', $scope.cart);
     }
 
