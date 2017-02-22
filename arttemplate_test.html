@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='http://common.cnblogs.com/script/jquery.js'></script>
+    <script src='https://wancy86.github.io/js/arttemplate-native.js'></script>
+    <script>
+    $(function() {
+        template.config('openTag', '<@');
+        template.config('closeTag', '@>');
+        var testdata = {
+            code: 50000,
+            data: [{
+                content: "你好",
+                entry_date: "2017-2-13912",
+                msg_id: "1",
+                msg_readstatus: "0",
+                msg_sendstatus: "0",
+                msg_type: "1",
+                read_time: "",
+                send_time: "2017-2-13912",
+                stamped: "0",
+                suid: "1",
+                uid: "2"
+            }, {
+                content: "hello ",
+                entry_date: "2017-2-13912",
+                msg_id: "2",
+                msg_readstatus: "0",
+                msg_sendstatus: "0",
+                msg_type: "1",
+                read_time: "",
+                send_time: "2017-2-13912",
+                stamped: "0",
+                suid: "1",
+                uid: "2"
+            }],
+            msg: null
+        };
+        var html = template('tmp_test', testdata);
+        console.log('html: ', html)
+        $('#content').html(html);
+    });
+    </script>
+</head>
+<script type="text/html" id="tmp_test">
+    <@ for(var i=0;i<data.length;i++){ var item=data[i]; @>
+        <h3><@=item.content@></h3>
+        <@}@>
+</script>
+
+<body>
+    <h3>test data list:</h3>
+    <hr>
+    <div id="content">
+    </div>
+</body>
+
+</html>
