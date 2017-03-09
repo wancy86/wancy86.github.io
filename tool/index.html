@@ -1,69 +1,92 @@
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>Tools</title>
-	<script src="jquery.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			
+    <meta charset="UTF-8">
+    <title>Tools</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap-theme.min.css">
+    <script type="text/javascript">
+    $(function() {
+        $('#intersection').click(function() {
+            $("#result1").val("");
+            $("#result2").val("");
+            $("#result3").val("");
+            var content_left = $('#left').val().split("\n");
+            var content_right = $('#right').val().split("\n");
+            var string = "";
+            var string2 = "";
+            var string3 = "";
+            for (var i = 0; i < content_left.length; i++) {
+                if (content_right.contains(content_left[i])) {
+                    string += content_left[i] + "\n";
+                }
+            }
+            $("#result1").val(string);
+
+            for (var i = 0; i < content_left.length; i++) {
+                if (!content_right.contains(content_left[i])) {
+                    string2 += content_left[i] + "\n";
+                }
+            }
+            $("#result2").val(string2);
+
+            for (var i = 0; i < content_right.length; i++) {
+                if (!content_left.contains(content_right[i])) {
+                    string3 += content_right[i] + "\n";
+                }
+            }
+            $("#result3").val(string3);
+        });
 
 
-			$('#intersection').click(function(){	
-				$("#result1").val("");
-				$("#result2").val("");
-				$("#result3").val("");
-				var content_left=$('#left').val().split("\n");
-				var content_right=$('#right').val().split("\n");
-				var string="";
-				var string2="";	
-				var string3="";				
-				for(var i=0;i<content_left.length;i++){
-					if(content_right.contains(content_left[i])){
-						string+=content_left[i]+"\n";
-					}
-				}
-				$("#result1").val(string);
+        Array.prototype.contains = function(element) {
 
-				for(var i=0;i<content_left.length;i++){
-					if(!content_right.contains(content_left[i])){
-						string2+=content_left[i]+"\n";
-					}
-				}
-				$("#result2").val(string2);
-
-				for(var i=0;i<content_right.length;i++){
-					if(!content_left.contains(content_right[i])){
-						string3+=content_right[i]+"\n";
-					}
-				}
-				$("#result3").val(string3);
-
-
-			});
-
-
-			Array.prototype.contains=function(element){
-
-				for(var i=0;i<this.length;i++){
-					if(this[i]==element){
-						return true;
-					}
-				}
-				return false;
-			}
-		});
-	</script>
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == element) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    });
+    </script>
 </head>
+
 <body>
-<h3>tools</h3>
-<textarea style="width:40% ;height:300px;" id="left"></textarea>
-<textarea style="width:40% ;height:300px;" id="right"></textarea><br></br>
-<button id="intersection">Intersection</button><br></br>
-
-<textarea style="width:25% ;height:300px;" id="result1"></textarea>
-<textarea style="width:25% ;height:300px;" id="result2"></textarea>
-<textarea style="width:25% ;height:300px;" id="result3"></textarea>
-
-	
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Tools</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>A</p>
+                <textarea style="resize:none;width:100% ;height:100px;" id="left"></textarea>
+            </div>
+            <div class="col-md-6">
+                <p>B</p>
+                <textarea style="resize:none;width:100% ;height:100px;" id="right"></textarea>
+                <button class="pull-right btn btn-success" style="margin-top: 5px;" id="intersection">Execute</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>交集</p>
+                <textarea style="resize:none;width:100% ;height:300px;" id="result1"></textarea>
+            </div>
+            <div class="col-md-4">
+                <p>A-B</p>
+                <textarea style="resize:none;width:100% ;height:300px;" id="result2"></textarea>
+            </div>
+            <div class="col-md-4">
+                <p>B-A</p>
+                <textarea style="resize:none;width:100% ;height:300px;" id="result3"></textarea>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
