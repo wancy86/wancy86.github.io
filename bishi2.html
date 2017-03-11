@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/Mark/appdata/local/temp/79.html -->
+<!-- saved from url=(0049)file:///C:/Users/mark/appdata/local/temp/125.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {
   width: 45em;
   border: 1px solid #ddd;
@@ -1016,7 +1016,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>笔试2</title></head><body><article class="markdown-body"><h1 id="2"><a name="user-content-2" href="file:///C:/Users/Mark/appdata/local/temp/79.html#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>笔试题目(2)</h1>
+</style><title>笔试2</title></head><body><article class="markdown-body"><h1 id="2"><a name="user-content-2" href="file:///C:/Users/mark/appdata/local/temp/125.html#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>笔试题目(2)</h1>
 <ol>
 <li>
 <p>在HTML页面中实现这样的效果：有一个表格，第一列是行号，最后一列有一个连接，点击链接删除当前行并修正行号(如果删除的是中间的行)，表格的上面和下面各有一个按钮，点击按钮会新添加一行。完成以上效果以后再加一个链接实现插入行的效果。 </p>
@@ -1039,8 +1039,55 @@ body .markdown-body
 <li>
 <p>数据库 本地建一个数据库，创建如下的表： 学生表： 学生ID，姓名，班级，年龄 课程表： 课程ID，课程名称 教师表： 教师ID，教师名称 任课表： ID，教师ID，课程ID 分数表： ID，课程ID，学生ID，分数 并为所有的表创建测试数据 </p>
 </li>
+<li>
+<p>写出下列输出结果<br>
+</p><pre><code class="js">var x = 20;
+var a = {
+    x: 15,
+    fn: function() {
+        var x = 30;
+        return function() {
+            return this.x;
+        };
+    }
+};
+console.log(a.fn()); //1:
+console.log((a.fn())()); //2:
+console.log(a.fn()()); //3:
+console.log(a.fn()() == (a.fn())()); //4:
+console.log(a.fn().call(this)); //5:
+console.log(a.fn().call(a)); //6:
+</code></pre><p></p>
+</li>
+<li>
+<p>输出结果是什么？<br>
+</p><pre><code class="js">var a = {n:10,m:20};
+var b = a;
+b.n = 30;
+console.log(a.n); //1:
+console.log(b); //2:
+</code></pre><p></p>
+</li>
+<li>
+<p>定义一个对象，使其拥有两个函数属性</p>
+</li>
+<li>
+<p>写一个function，实现数组去重</p>
+</li>
+<li>
+<p>编写一个函数fn(Number n),将数字转为大写输出，如输入123，输出一百二十三。</p>
+</li>
+<li>
+<p>36辆自动赛车和6条跑道，没有计时器的前提下，最少用几次比赛可以筛选出最快的三辆赛车？说说你的分析过程</p>
+</li>
+<li>
+<p>一面墙，单独工作时，A花18小时砌好，B花24小时，C花30小时，现A, B, C的顺序轮流砌，每人工作1小时换班，完工时，B总共干了多少小时?</p>
+</li>
+<li>
+<p>写一个function求三个数的最小公倍数</p>
+</li>
 </ol>
-<h1 id="html"><a name="user-content-html" href="file:///C:/Users/Mark/appdata/local/temp/79.html#html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>html模板</h1>
+<h1 id="html"><a name="user-content-html" href="file:///C:/Users/mark/appdata/local/temp/125.html#html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>html模板</h1>
 <p>你可以用下面的代码作为模板<br>
 </p><pre><code class="html">&lt;html&gt;
 
