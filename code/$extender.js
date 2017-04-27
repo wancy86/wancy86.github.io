@@ -336,23 +336,23 @@ String.prototype.toCurrencyValue = function() {
     var e = /,/gi;
     return this.replace("$", "").replace(e, "")
 }
+String.prototype.right = function(len) {
+    return this.substr(this.length-(len||0));
+}
 
+String.prototype.left = function(len) {
+    return this.substr(0,(len||this.length));
+}
 
 $.fn.updateFilter = function(filterType, paramVal) {
     // filter="DATE|GREATERTHANEQUALS|LESSTHANEQUALS|" 
     // param="|01/01/1900|01/01/2100|" 
     // dtype="|DATE|DATE
     try {
-        var div = $('#PQ_ExpirationDate').parent('div');
+        var div = this.parent('div');
         var filter = div.attr('filter').split('|');
         var param = div.attr('param').split('|');
-        var index = -1;
-        for (var i = 0; i < filter.length; i++) {
-            if (filter[i] == filterType) {
-                index = i;
-                break;
-            }
-        }
+        var index = filter.indexOf(filterType);
         if (index > -1) {
             param[index] = paramVal;
             param = param.join('|');
