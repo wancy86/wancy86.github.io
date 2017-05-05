@@ -22,8 +22,24 @@
 1. 子查询返回尽量少的记录
 1. 子查询尽量使用确定性的判断，如=，in，exists等，避免使用any，some或all
 
+### 子查询
+子查询会被转换为连接操作，但是复杂的子查询可能不会转化为连接，这个时候子查询会被**优先执行**，其结果作为下一个操作的输入部分。
+
 ### merge操作
 一个语句中实现数据的insert和update
+
+### for xml path('')
+高性能的字段合并
+```
+/*for xml path输出自定义的列名比较麻烦，下面这个写法完美破解*/
+declare @names varchar(max) = ''
+select @names = (
+    select A.name+',' from users as A
+    for xml path('')
+)
+select names = @names
+```
+
 
 ### 索引类型
 1. 聚集索引
