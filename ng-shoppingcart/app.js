@@ -1,11 +1,33 @@
-angular.module('myapp', [])
+angular.module('test.md1', [])
+
+.service('testserv', [function() {
+    this.log = function(data) {
+        console.log('testserv log:', data);
+    }
+}]);
+
+// shopping car module
+angular.module('myapp', ['test.md1'])
 
 .run(function() {
     console.log('1111:', 1111);
 })
 
-.controller('shoppingCartCtrl', ['$scope', '$filter', function($scope, $filter) {
+.factory('shopinglog', ['testserv', function(testserv) {
+    return {
+        log: function(data) {
+            testserv.log(data);
+        }
+    }
+}])
+
+.controller('shoppingCartCtrl', ['$scope', '$filter', 'testserv', 'shopinglog', function($scope, $filter, testserv, shopinglog) {
     console.log('1111:', 2222);
+
+    // 这个两个service的引入只是为了验证模块引用没有问题
+    testserv.log('shoppingCartCtrl')
+    shopinglog.log('shopinglog service')
+
     $scope.title = "京东商城";
     $scope.goods = [{
         name: "apple",
@@ -48,7 +70,7 @@ angular.module('myapp', [])
             });
             $scope.cart.push(added);
         }
-        $scope.cart = $filter('orderBy')($scope.cart,'good.name');
+        $scope.cart = $filter('orderBy')($scope.cart, 'good.name');
         console.log('scope.cart2:', $scope.cart);
     }
 
