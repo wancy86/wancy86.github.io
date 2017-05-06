@@ -1,4 +1,4 @@
-[译]AngularJS $apply, $digest, 和$evalAsync的比较
+#[译]AngularJS $apply, $digest, 和$evalAsync的比较
 
 原文:[The differences between AngularJS $apply, $digest, and $evalAsync](http://www.panda-os.com/blog/2015/01/angularjs-apply-digest-and-evalasync/)
 
