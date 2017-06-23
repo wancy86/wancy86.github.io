@@ -24,6 +24,7 @@
             var content_right = [];
             var string = "";
             for (var i = 0; i < content_left.length; i++) {
+                content_left[i]=(content_left[i]).trim();
                 if (!content_right.contains(content_left[i])) {
                     content_right.push(content_left[i]);
                 }
