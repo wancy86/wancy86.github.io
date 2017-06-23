@@ -22,7 +22,6 @@
         $('#execute').click(function() {
             var content_left = $('#left').val().split("\n");
             var content_right = [];
-            var string = "";
             for (var i = 0; i < content_left.length; i++) {
                 content_left[i]=(content_left[i]).trim();
                 if (!content_right.contains(content_left[i])) {
@@ -30,6 +29,8 @@
                 }
             }
             content_right.sort();
+            $('#left').parent().find('span').text(content_left.length);
+            $('#right').parent().find('span').text(content_right.length);
             $('#right').val(content_right.join('\n'));
         });
     });
@@ -52,11 +53,11 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>Original List:</p>
+                <p>Original List: <span style="color:blue;"></span></p>
                 <textarea style="resize:none;width:100% ;height:200px;" id="left"></textarea>
             </div>
             <div class="col-md-6">
-                <p>Unique List:</p>
+                <p>Unique List: <span style="color:blue;"></span></p>
                 <textarea style="resize:none;width:100% ;height:200px;" id="right"></textarea>
                 <button class="pull-right btn btn-success" style="margin-top: 5px;" id="execute">Execute</button>
             </div>
