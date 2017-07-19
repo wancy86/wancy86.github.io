@@ -15,6 +15,8 @@
             $("#result3").val("");
             var content_left = $('#left').val().split("\n");
             var content_right = $('#right').val().split("\n");
+            $('#A').text(content_left.length);
+            $('#B').text(content_right.length);
             var string = "";
             var string2 = "";
             var string3 = "";
@@ -24,6 +26,7 @@
                 }
             }
             $("#result1").val(string);
+            $('#AB').text(string.split('\n').length);
 
             for (var i = 0; i < content_left.length; i++) {
                 if (!content_right.contains(content_left[i])) {
@@ -31,6 +34,7 @@
                 }
             }
             $("#result2").val(string2);
+            $('#A-B').text(string.split('\n').length);
 
             for (var i = 0; i < content_right.length; i++) {
                 if (!content_left.contains(content_right[i])) {
@@ -38,6 +42,7 @@
                 }
             }
             $("#result3").val(string3);
+            $('#B-A').text(string.split('\n').length);
         });
 
 
@@ -70,26 +75,26 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>A:</p>
+                <p>A: (<span id="A" style="color:blue;">0</span>)</p>
                 <textarea style="resize:none;width:100% ;height:100px;" id="left"></textarea>
             </div>
             <div class="col-md-6">
-                <p>B:</p>
+                <p>B: (<span id="B" style="color:blue;">0</span>)</p>
                 <textarea style="resize:none;width:100% ;height:100px;" id="right"></textarea>
                 <button class="pull-right btn btn-success" style="margin-top: 5px;" id="intersection">Execute</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <p>交集:</p>
+                <p>交集: (<span id="AB" style="color:blue;">0</span>)</p>
                 <textarea style="resize:none;width:100% ;height:300px;" id="result1"></textarea>
             </div>
             <div class="col-md-4">
-                <p>A-B:</p>
+                <p>A-B: (<span id="A-B" style="color:blue;">0</span>)</p>
                 <textarea style="resize:none;width:100% ;height:300px;" id="result2"></textarea>
             </div>
             <div class="col-md-4">
-                <p>B-A:</p>
+                <p>B-A: (<span id="B-A" style="color:blue;">0</span>)</p>
                 <textarea style="resize:none;width:100% ;height:300px;" id="result3"></textarea>
             </div>
         </div>
