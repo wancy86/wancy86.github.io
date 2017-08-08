@@ -56,151 +56,58 @@
 
 ### 数据库
 ##### 1. 常用表
-1. PolicyQuote
-1. PolicyQuote_AddIns
-1. PolicyQuote_AdditionalInterest
-1. PolicyQuote_Answers
-1. PolicyQuote_Stops
-1. PolicyData
-1. PolicyData_Bills
-1. Policy_Documents
-1. PayPlans_Lines
-1. PayPlans
-1. Ledger_AccTransTypes
-1. Ledger_AccountTypes
-1. System_AH_Params
-1. System_Attachments
-1. System_Attachments_Categories
-1. System_Billing
-1. System_Commissions
-1. System_CompanyTree
-1. System_CompanyTree_Attachments
-1. System_CompanyTree_Bank
-1. System_CompanyTree_BusinessAbility
-1. System_CompanyTree_Data
-1. System_Constants
-1. System_Countries
-1. System_DataCollections
-1. System_Forms
-1. System_Holidays
-1. System_Images
-1. System_Language_Translations
-1. System_LOBs
-1. System_NavButtons
-1. System_Parameters
-1. System_PolicyTabs
-1. System_PolicyTerms
-1. System_PolicyTransactions
-1. System_Premiums
-1. System_Premiums_Levels
-1. WrittenPremium_Levels
-1. WrittenPremium
-1. System_Reports
-1. System_Rights
-1. System_RoleRights
-1. System_Roles
-1. System_Rules
-1. System_ScheduleTypes
-1. System_Sessions
-1. System_States
-1. System_Stops
-1. System_TempVar
-1. System_UserAgencies
-1. System_UserRights
-1. System_UserRoles
-1. System_Users
-1. DTS_ScheduleTask
+|Table Name                          |Table Name                          |Table Name                         |
+|:-----------------------------------|:-----------------------------------|:----------------------------------|  
+|PolicyQuote                         |System_CompanyTree_Attachments      |System_Premiums_Levels             |  
+|PolicyQuote_AddIns                  |System_CompanyTree_Bank             |WrittenPremium_Levels              |  
+|PolicyQuote_AdditionalInterest      |System_CompanyTree_BusinessAbility  |WrittenPremium                     |  
+|PolicyQuote_Answers                 |System_CompanyTree_Data             |System_Reports                     |  
+|PolicyQuote_Stops                   |System_Constants                    |System_Rights                      |  
+|PolicyData                          |System_Countries                    |System_RoleRights                  |  
+|PolicyData_Bills                    |System_DataCollections              |System_Roles                       |  
+|Policy_Documents                    |System_Forms                        |System_Rules                       |  
+|PayPlans_Lines                      |System_Holidays                     |System_ScheduleTypes               |  
+|PayPlans                            |System_Images                       |System_Sessions                    |  
+|Ledger_AccTransTypes                |System_Language_Translations        |System_States                      |  
+|Ledger_AccountTypes                 |System_LOBs                         |System_Stops                       |  
+|System_AH_Params                    |System_NavButtons                   |System_TempVar                     |  
+|System_Attachments                  |System_Parameters                   |System_UserAgencies                |  
+|System_Attachments_Categories       |System_PolicyTabs                   |System_UserRights                  |  
+|System_Billing                      |System_PolicyTerms                  |System_UserRoles                   |  
+|System_Commissions                  |System_PolicyTransactions           |System_Users                       |  
+|System_CompanyTree                  |System_Premiums                     |DTS_ScheduleTask                   |  
 
 ##### 2. 非常用表
-1. System_AC_Reports
-1. System_AH_Reports
-1. System_Attachments_Codes
-1. System_BusinessRules
-1. System_CategoryReports
-1. System_CC_Types
-1. System_CheckStacks
-1. System_ClaimsLimits
-1. System_Codes
-1. System_CompanyLevels
-1. System_CompanyTree_Attachments_BillType
-1. System_CompanyTree_Attachments_LicenseType
-1. System_CompanyTree_BankAccType
-1. System_CompanyTree_Individual
-1. System_CompanyTree_Notes
-1. System_CompanyTree_NotesRelated
-1. System_CompanyTree_NotesSubj
-1. System_CompanyTree_Status
-1. System_CompanyTree_Type
-1. System_CoreLanguages
-1. System_CustomerCare_Features
-1. System_Data
-1. System_DataCollections_Archive
-1. System_DataCopy_Data
-1. System_DataCopy_Tables
-1. System_DataTypes
-1. System_DevModeEmails
-1. System_DropDowns
-1. System_DTS_SysCheck
-1. System_DTS_SysCheckLog
-1. System_Errors
-1. System_ExportImportSetting
-1. System_FileUpload_Params
-1. System_Forms_Tables
-1. System_History_Commissions
-1. System_History_CompanyTree
-1. System_History_CompanyTree_Bank
-1. System_History_CompTree_Data
-1. System_History_Forms_CheckLimits
-1. System_History_RoleRights
-1. System_History_Roles
-1. System_History_UserReportCategories
-1. System_History_UserRights
-1. System_History_UserRoles
-1. System_History_Users
-1. System_History_Users_Data
-1. System_History_UsersPassw
-1. System_Holidays_Temp
-1. System_Images_AG
-1. System_Insured_Logins
-1. System_Insured_Logins_Actions
-1. System_Insured_Logins_Policies
-1. System_Languages
-1. System_Logging
-1. System_MailPaymentsTo
-1. System_Merchant_Constants
-1. System_MimeTypes
-1. System_NavExtension
-1. System_PasswordRules
-1. System_PaymentTypes
-1. System_Questions
-1. System_QuoteCopy_Data
-1. System_QuoteCopy_Tables
-1. System_RatingTables
-1. System_RatingTables_History
-1. System_ReportCategories
-1. System_Reports_Params
-1. System_ReportTypes
-1. System_Rules_Hashes
-1. System_Schemes
-1. System_Schemes_Colors
-1. System_SecurityQuestions
-1. System_SMS_Providers
-1. System_State_City_Zips
-1. System_StaticFiles
-1. System_TableReference
-1. System_TCUnsafeSet
-1. System_TempLanguage
-1. System_TWFilters
-1. System_User_Colors
-1. System_UserReportCategories
-1. System_Users_Data
-1. System_Users_Questions
-1. System_Users_TravelStates
-1. System_Versions
-1. System_WebServers
-1. System_WelcomeMsgs
-1. System_WelcomeMsgs_Temp
-1. System_WSLogs
-1. System_ZipCodeRestrictions
-
+|Table Name                                  |Table Name                                  |Table Name   
+|:-------------------------------------------|:------------------------------------|:----------------------------|                                              
+|System_AC_Reports                           |System_Errors                        |System_Questions             |
+|System_AH_Reports                           |System_ExportImportSetting           |System_QuoteCopy_Data        |
+|System_Attachments_Codes                    |System_FileUpload_Params             |System_QuoteCopy_Tables      |
+|System_BusinessRules                        |System_Forms_Tables                  |System_RatingTables          |
+|System_CategoryReports                      |System_History_Commissions           |System_RatingTables_History  |
+|System_CC_Types                             |System_History_CompanyTree           |System_ReportCategories      |
+|System_CheckStacks                          |System_History_CompanyTree_Bank      |System_Reports_Params        |
+|System_ClaimsLimits                         |System_History_CompTree_Data         |System_ReportTypes           |
+|System_Codes                                |System_History_Forms_CheckLimits     |System_Rules_Hashes          |
+|System_CompanyLevels                        |System_History_RoleRights            |System_Schemes               |
+|System_CompanyTree_Attachments_BillType     |System_History_Roles                 |System_Schemes_Colors        |
+|System_CompanyTree_Attachments_LicenseType  |System_History_UserReportCategories  |System_SecurityQuestions     |
+|System_CompanyTree_BankAccType              |System_History_UserRights            |System_SMS_Providers         |
+|System_CompanyTree_Individual               |System_History_UserRoles             |System_State_City_Zips       |
+|System_CompanyTree_Notes                    |System_History_Users                 |System_StaticFiles           |
+|System_CompanyTree_NotesRelated             |System_History_Users_Data            |System_TableReference        |
+|System_CompanyTree_NotesSubj                |System_History_UsersPassw            |System_TCUnsafeSet           |
+|System_CompanyTree_Status                   |System_Holidays_Temp                 |System_TempLanguage          |
+|System_CompanyTree_Type                     |System_Images_AG                     |System_TWFilters             |
+|System_CoreLanguages                        |System_Insured_Logins                |System_User_Colors           |
+|System_CustomerCare_Features                |System_Insured_Logins_Actions        |System_UserReportCategories  |
+|System_Data                                 |System_Insured_Logins_Policies       |System_Users_Data            |
+|System_DataCollections_Archive              |System_Languages                     |System_Users_Questions       |
+|System_DataCopy_Data                        |System_Logging                       |System_Users_TravelStates    |
+|System_DataCopy_Tables                      |System_MailPaymentsTo                |System_Versions              |
+|System_DataTypes                            |System_Merchant_Constants            |System_WebServers            |
+|System_DevModeEmails                        |System_MimeTypes                     |System_WelcomeMsgs           |
+|System_DropDowns                            |System_NavExtension                  |System_WelcomeMsgs_Temp      |
+|System_DTS_SysCheck                         |System_PasswordRules                 |System_WSLogs                |
+|System_DTS_SysCheckLog                      |System_PaymentTypes                  |System_ZipCodeRestrictions   |
 
