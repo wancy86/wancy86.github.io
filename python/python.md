@@ -487,5 +487,3 @@ data = sorted(data)
 list1, list2 = map(lambda t: list(t), zip(*data))
 ```            
 
-git config --global user.email "wancy86@sina.com"
-git config --global user.name "wancy86"
