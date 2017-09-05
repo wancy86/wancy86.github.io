@@ -231,3 +231,261 @@ Counter(dict(list_of_pairs))    # 从(元素，计数值)组成的列表转化�
 c.most_common()[:-n-1:-1]       # 最小n个计数的(元素，计数值)组成的列表
 c += Counter()                  # 利用counter的相加来去除负值和0的值
 ```
+
+#### namedtuple和enum.Enum
+```python
+from collections import namedtuple
+from enum import Enum
+
+class Species(Enum):
+    cat = 1
+    dog = 2
+    horse = 3
+    aardvark = 4
+    butterfly = 5
+    owl = 6
+    platypus = 7
+    dragon = 8
+    unicorn = 9
+    # 依次类推
+
+    # 但我们并不想关心同一物种的年龄，所以我们可以使用一个别名
+    kitten = 1  # (译者注：幼小的猫咪)
+    puppy = 2   # (译者注：幼小的狗狗)
+
+Animal = namedtuple('Animal', 'name age type')
+perry = Animal(name="Perry", age=31, type=Species.cat)
+drogon = Animal(name="Drogon", age=4, type=Species.dragon)
+tom = Animal(name="Tom", age=75, type=Species.cat)
+charlie = Animal(name="Charlie", age=2, type=Species.kitten)
+```
+
+#### [deque](https://docs.python.org/3/library/collections.html?highlight=deque#deque-objects)  
+functions: append, appendleft, pop, popleft, extend, extendleft, reverse, rotate, insert, remove, index, count, copy, maxlen...
+```python
+
+>>> from collections import deque
+>>> d = deque('ghi')                 # make a new deque with three items
+>>> for elem in d:                   # iterate over the deque's elements
+...     print(elem.upper())
+G
+H
+I
+
+>>> d.append('j')                    # add a new entry to the right side
+>>> d.appendleft('f')                # add a new entry to the left side
+>>> d                                # show the representation of the deque
+deque(['f', 'g', 'h', 'i', 'j'])
+
+>>> d.pop()                          # return and remove the rightmost item
+'j'
+>>> d.popleft()                      # return and remove the leftmost item
+'f'
+>>> list(d)                          # list the contents of the deque
+['g', 'h', 'i']
+>>> d[0]                             # peek at leftmost item
+'g'
+>>> d[-1]                            # peek at rightmost item
+'i'
+
+>>> list(reversed(d))                # list the contents of a deque in reverse
+['i', 'h', 'g']
+>>> 'h' in d                         # search the deque
+True
+>>> d.extend('jkl')                  # add multiple elements at once
+>>> d
+deque(['g', 'h', 'i', 'j', 'k', 'l'])
+>>> d.rotate(1)                      # right rotation
+>>> d
+deque(['l', 'g', 'h', 'i', 'j', 'k'])
+>>> d.rotate(-1)                     # left rotation
+>>> d
+deque(['g', 'h', 'i', 'j', 'k', 'l'])
+
+>>> deque(reversed(d))               # make a new deque in reverse order
+deque(['l', 'k', 'j', 'i', 'h', 'g'])
+>>> d.clear()                        # empty the deque
+>>> d.pop()                          # cannot pop from an empty deque
+Traceback (most recent call last):
+    File "<pyshell#6>", line 1, in -toplevel-
+        d.pop()
+IndexError: pop from an empty deque
+
+>>> d.extendleft('abc')              # extendleft() reverses the input order
+>>> d
+deque(['c', 'b', 'a'])
+```
+
+#### enumerate  
+枚举(enumerate)是Python内置函数。它允许我们遍历数据并自动计数，enumerate也接受一些可选参数，这使它更有用。
+```python
+for counter, value in enumerate(some_list):
+    print(counter, value)
+
+# 可选参数允许我们定制从哪个数字开始枚举
+my_list = ['apple', 'banana', 'grapes', 'pear']
+for c, value in enumerate(my_list, 1):
+    print(c, value)
+
+# 输出:
+(1, 'apple')
+(2, 'banana')
+(3, 'grapes')
+(4, 'pear')    
+
+# 你还可以用来创建包含索引的元组列表， 例如：
+my_list = ['apple', 'banana', 'grapes', 'pear']
+counter_list = list(enumerate(my_list, 1))
+print(counter_list)
+# 输出: [(1, 'apple'), (2, 'banana'), (3, 'grapes'), (4, 'pear')]
+```
+
+# 自省
+
+#### dir
+它返回一个列表，列出了一个对象所拥有的属性和方法。
+```python
+my_list = [1, 2, 3]
+dir(my_list)
+# Output: ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__',
+# '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+# '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__',
+# '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__',
+# '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__',
+# '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__',
+# '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop',
+# 'remove', 'reverse', 'sort']
+```
+
+#### type和id   
+type函数返回一个对象的类型。举个例子：
+```python
+print(type(''))
+# Output: <type 'str'>
+
+print(type([]))
+# Output: <type 'list'>
+
+print(type({}))
+# Output: <type 'dict'>
+
+print(type(dict))
+# Output: <type 'type'>
+
+print(type(3))
+# Output: <type 'int'>
+```
+id()函数返回任意不同种类对象的唯一ID，举个例子：
+```python
+name = "Yasoob"
+print(id(name))
+# Output: 139972439030304
+```
+
+#### [inspect模块](https://docs.python.org/3/library/inspect.html?highlight=inspect#module-inspect)  
+inspect模块也提供了许多有用的函数，来获取活跃对象的信息。比方说，你可以查看一个对象的成员，只需运行：
+```python
+import inspect
+print(inspect.getmembers(str))
+# Output: [('__add__', <slot wrapper '__add__' of ... ...
+```
+
+# 各种推导式(comprehensions) 
+
+#### 列表(list)推导式        
+```python
+multiples = [i for i in range(30) if i % 3 is 0]
+print(multiples)
+# Output: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+
+squared = [x**2 for x in range(10)]
+```
+
+#### 字典(dict)推导式        
+```python
+mcase = {'a': 10, 'b': 34, 'A': 7, 'Z': 3}
+
+mcase_frequency = {
+    k.lower(): mcase.get(k.lower(), 0) + mcase.get(k.upper(), 0)
+    for k in mcase.keys()
+}
+
+# mcase_frequency == {'a': 17, 'z': 3, 'b': 34}
+```
+
+#### 集合(set)推导式     
+```python
+squared = {x**2 for x in [1, 1, 2]}
+print(squared)
+# Output: {1, 4}
+```
+
+# 异常 
+
+最基本的术语里我们知道了try/except从句。可能触发异常产生的代码会放到try语句块里，而处理异常的代码会在except语句块里实现。
+这是一个简单的例子：
+```python
+try:
+    file = open('test.txt', 'rb')
+except EOFError as e:
+    print("An EOF error occurred.")
+    raise e
+except IOError as e:
+    print("An error occurred.")
+    raise e
+finally:
+    # 包裹到finally从句中的代码不管异常是否触发都将会被执行。
+    print("This would be printed whether or not an exception occurred!")    
+
+# 最后一种方式会捕获所有异常：
+try:
+    file = open('test.txt', 'rb')
+except Exception:
+    # 打印一些异常日志，如果你想要的话
+    raise    
+
+# try/else
+try:
+    print('I am sure no exception is going to occur!')
+except Exception:
+    print('exception')
+else:
+    # 这里的代码只会在try语句里没有触发异常时运行,
+    # 但是这里的异常将 *不会* 被捕获
+    print('This would only run if no exception occurs. And an error here '
+          'would NOT be caught.')
+finally:
+    print('This would be printed in every case.')
+
+```    
+
+# lambda表达式  
+
+#### 原型
+```
+lambda 参数:操作(参数)
+```
+例子
+```
+add = lambda x, y: x + y
+
+print(add(3, 5))
+# Output: 8
+```
+列表排序
+```
+a = [(1, 2), (4, 1), (9, 10), (13, -3)]
+a.sort(key=lambda x: x[1])
+
+print(a)
+# Output: [(13, -3), (4, 1), (1, 2), (9, 10)]
+```
+列表并行排序
+```
+data = zip(list1, list2)
+data = sorted(data)
+list1, list2 = map(lambda t: list(t), zip(*data))
+```            
+
+git config --global user.email "wancy86@sina.com"
+git config --global user.name "wancy86"
