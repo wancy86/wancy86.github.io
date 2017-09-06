@@ -512,6 +512,114 @@ print(a)
 data = sorted(data)
 list1, list2 = map(lambda t: list(t), zip(*data))
 </pre></div>
+
+
+<h1><a href="https://wiki.python.org/moin/Powerful%20Python%20One-Liners">实用的一行式</a></h1>
+<h4>简易Web Server</h4>
+<div class="codehilite"><pre><span class="c"># Python 2</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+
+<span class="c"># Python 3</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+</pre></div>
+
+
+<h4>漂亮的打印</h4>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Yasoob&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">&#39;undefined&#39;</span><span class="p">,</span> <span class="s">&#39;personality&#39;</span><span class="p">:</span> <span class="s">&#39;awesome&#39;</span><span class="p">}</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+
+<span class="c"># 快速漂亮的从文件打印出json数据</span>
+<span class="n">cat</span> <span class="nb">file</span><span class="o">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">json</span><span class="o">.</span><span class="n">tool</span>
+</pre></div>
+
+
+<h4>脚本性能分析</h4>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">cProfile</span> <span class="n">my_script</span><span class="o">.</span><span class="n">py</span>
+<span class="c"># 备注：cProfile是一个比profile更快的实现，因为它是用c写的</span>
+</pre></div>
+
+
+<h4>CSV转换为json</h4>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;import csv,json;print json.dumps(list(csv.reader(open(&#39;csv_file.csv&#39;))))&quot;</span>
+<span class="c"># 确保更换csv_file.csv为你想要转换的csv文件</span>
+</pre></div>
+
+
+<h4>列表辗平</h4>
+<div class="codehilite"><pre><span class="n">a_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">a_list</span><span class="p">)))</span>
+<span class="c"># Output: [1, 2, 3, 4, 5, 6]</span>
+
+<span class="c"># or</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">a_list</span><span class="p">)))</span>
+<span class="c"># Output: [1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+
+
+<h1>Python 2</h1>
+<h4>for/else</h4>
+<p>else在没有break, 且循环结束时执行</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">container</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">search_something</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="c"># Found it!</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c"># Didn&#39;t find anything..</span>
+    <span class="n">not_found_in_container</span><span class="p">()</span>
+</pre></div>
+
+
+<p>找出2到10之间的数字的因子, 和质数</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;equals&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># loop fell through without finding a factor</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;is a prime number&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>使用C扩展</h1>
+<p>开发者有三种方法可以在自己的Python代码中来调用C编写的函数-ctypes，SWIG，Python/C API。每种方式也都有各自的利弊。</p>
+<p>我们要明确为什么要在Python中调用C？ </p>
+<p>常见原因如下：     </p>
+<ol>
+<li>你要提升代码的运行速度，而且你知道C要比Python快50倍以上  </li>
+<li>C语言中有很多传统类库，而且有些正是你想要的，但你又不想用Python去重写它们  </li>
+<li>想对从内存到文件接口这样的底层资源进行访问  </li>
+<li>不需要理由，就是想这样做  </li>
+</ol>
+<h1>文件操作 open</h1>
+<div class="codehilite"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+
+
+<p>open的第一个参数是文件名。第二个(mode 打开模式)决定了这个文件如何被打开:</p>
+<ol>
+<li>如果你想读取文件，传入r</li>
+<li>如果你想读取并写入文件，传入r+</li>
+<li>如果你想覆盖写入文件，传入w</li>
+<li>如果你想在文件末尾附加内容，传入a</li>
+</ol>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">jpgdata</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;</span><span class="se">\xff\xd8</span><span class="s">&#39;</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a JPEG file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a random file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+
+<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;summary.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+    <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jpgdata</span><span class="p">))</span>
+</pre></div>
         </article>
       </div>
     </div>
