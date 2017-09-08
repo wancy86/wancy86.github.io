@@ -487,3 +487,116 @@ data = sorted(data)
 list1, list2 = map(lambda t: list(t), zip(*data))
 ```            
 
+# [实用的一行式](https://wiki.python.org/moin/Powerful%20Python%20One-Liners)  
+
+#### 简易Web Server  
+```python
+# Python 2
+python -m SimpleHTTPServer
+
+# Python 3
+python -m http.server
+```
+
+#### 漂亮的打印  
+```python
+from pprint import pprint
+
+my_dict = {'name': 'Yasoob', 'age': 'undefined', 'personality': 'awesome'}
+pprint(my_dict)
+
+# 快速漂亮的从文件打印出json数据
+cat file.json | python -m json.tool
+```
+
+#### 脚本性能分析  
+```python
+python -m cProfile my_script.py
+# 备注：cProfile是一个比profile更快的实现，因为它是用c写的
+```
+
+#### CSV转换为json  
+```python
+python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv'))))"
+# 确保更换csv_file.csv为你想要转换的csv文件
+```
+
+#### 列表辗平  
+```python
+a_list = [[1, 2], [3, 4], [5, 6]]
+print(list(itertools.chain.from_iterable(a_list)))
+# Output: [1, 2, 3, 4, 5, 6]
+
+# or
+print(list(itertools.chain(*a_list)))
+# Output: [1, 2, 3, 4, 5, 6]
+```
+
+# Python 2
+
+#### for/else
+else在没有break, 且循环结束时执行
+```python
+for item in container:
+    if search_something(item):
+        # Found it!
+        process(item)
+        break
+else:
+    # Didn't find anything..
+    not_found_in_container()
+```
+找出2到10之间的数字的因子, 和质数
+```python
+for n in range(2, 20):
+    for x in range(2, n):
+        if n % x == 0:
+            print(n, 'equals', x, '*', n / x)
+            break
+    else:
+        # loop fell through without finding a factor
+        print(n, 'is a prime number')
+```        
+
+# 使用C扩展
+
+开发者有三种方法可以在自己的Python代码中来调用C编写的函数-ctypes，SWIG，Python/C API。每种方式也都有各自的利弊。
+
+我们要明确为什么要在Python中调用C？ 
+
+常见原因如下：     
+
+1. 你要提升代码的运行速度，而且你知道C要比Python快50倍以上  
+1. C语言中有很多传统类库，而且有些正是你想要的，但你又不想用Python去重写它们  
+1. 想对从内存到文件接口这样的底层资源进行访问  
+1. 不需要理由，就是想这样做  
+
+
+# 文件操作 open
+
+```python
+with open('photo.jpg', 'r+') as f:
+    jpgdata = f.read()
+```
+
+open的第一个参数是文件名。第二个(mode 打开模式)决定了这个文件如何被打开:
+
+1. 如果你想读取文件，传入r
+1. 如果你想读取并写入文件，传入r+
+1. 如果你想覆盖写入文件，传入w
+1. 如果你想在文件末尾附加内容，传入a
+
+```python
+import io
+
+with open('photo.jpg', 'rb') as inf:
+    jpgdata = inf.read()
+
+if jpgdata.startswith(b'\xff\xd8'):
+    text = u'This is a JPEG file (%d bytes long)\n'
+else:
+    text = u'This is a random file (%d bytes long)\n'
+
+with io.open('summary.txt', 'w', encoding='utf-8') as outf:
+    outf.write(text % len(jpgdata))
+```

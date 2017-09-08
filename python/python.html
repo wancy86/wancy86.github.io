@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>python.md—D:\GitHub\wancy86.github.io\python</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h1>Python</h1>
+<h4>global</h4>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;mark&#39;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>return 多个结果</h4>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;mark&#39;</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="s">&#39;pythoner&#39;</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">,</span><span class="n">job</span>
+</pre></div>
+
+
+<h4>装饰器 - @[返回装饰器的表达式]</h4>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s">&#39;out.log&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">logging_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;解决原方法上__name__,等被覆盖的问题&#39;&#39;&#39;</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s">&quot; was called&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+            <span class="c"># 打开logfile, 并写入内容</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+                <span class="c"># 现在将日志打到指定的logfile</span>
+                <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_string</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapped_function</span>
+    <span class="k">return</span> <span class="n">logging_decorator</span>
+
+<span class="nd">@logit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc1</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc1</span><span class="p">()</span>
+<span class="c"># Output: myfunc1 was called</span>
+<span class="c"># 现在一个叫做 out.log 的文件出现了, 里面的内容就是上面的字符串</span>
+
+<span class="nd">@logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s">&#39;func2.log&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc2</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc2</span><span class="p">()</span>
+<span class="c"># Output: myfunc2 was called</span>
+<span class="c"># 现在一个叫做 func2.log 的文件出现了, 里面的内容就是上面的字符串</span>
+</pre></div>
+
+
+<h4>默认参数</h4>
+<p>在Python中当函数被定义时, 默认参数只会运算一次, 而不是每次被调用时都会重新运算。你应该永远不要定义可变类型的默认参数, 除非你知道你正在做什么。</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">add_to</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">target</span>
+
+<span class="n">add_to</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c"># Output: [1]</span>
+
+<span class="n">add_to</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># Output: [2]</span>
+
+<span class="n">add_to</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># Output: [3]</span>
+</pre></div>
+
+
+<h4>默认参数 - 2</h4>
+<p>正确的定义, 每次调用生成新的list</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">add_to</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">target</span>
+</pre></div>
+
+
+<h4>可变类型</h4>
+<p>Python中可变(mutable)与不可变(immutable)的数据类型</p>
+<div class="codehilite"><pre><span class="n">foo</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;hi&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="c"># Output: [&#39;hi&#39;]</span>
+
+<span class="n">bar</span> <span class="o">=</span> <span class="n">foo</span>
+<span class="n">bar</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;bye&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="c"># Output: [&#39;hi&#39;, &#39;bye&#39;]</span>
+</pre></div>
+
+
+<h4><strong>slots</strong>魔法</h4>
+<p>在Python中, 每个类都有实例属性。默认情况下Python用一个字典来保存一个对象的实例属性。对于有着已知属性的小类来说, 它可能是个瓶颈。这个字典浪费了很多内存。Python不能在对象创建时直接分配一个固定量的内存来保存所有的属性。因此如果你创建许多对象(我指的是成千上万个), 它会消耗掉很多内存(dict初始化时会默认容量的内存分配)。这个方法需要使用<strong>slots</strong>来告诉Python不要使用字典, 而且只给一个固定集合的属性分配空间。</p>
+<div class="codehilite"><pre><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;identifier&#39;</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span> <span class="o">=</span> <span class="n">identifier</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">set_up</span><span class="p">()</span>
+</pre></div>
+
+
+<h4>dict和list的内存分配</h4>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">list类似于 Vector</td>
+<td align="left">对象和指针数组是分开分配的, 数组是在堆上。指针数组的大小是动态分配的, 分配的内存肯定要多于实际的。既然是动态分配的, 那么realloc调整大小就会移动数据, 复制数据, 大量数据还是用链表比较好。</td>
+</tr>
+<tr>
+<td align="left">dict类似于 Hash table</td>
+<td align="left">字典本身默认有元素容量, 不够的才去堆上分配。需要扩容或者收缩, 就会动态重新分配内存, 重新hash。dict的keys()等调用生成list 如果数量很大, 建议用迭代器</td>
+</tr>
+</tbody>
+</table>
+<h4><a href="https://eastlakeside.gitbooks.io/interpy-zh/content/virtual_environment/virtual_environment.html">虚拟环境(virtualenv)</a></h4>
+<p>Virtualenv 是一个工具，它能够帮我们创建一个独立(隔离)的Python环境。想象你有一个应用程序，依赖于版本为2的第三方模块，但另一个程序依赖的版本是3，请问你如何使用和开发这些应用程序？如果你把一切都安装到了/usr/lib/python2.7/site-packages（或者其它平台的标准位置），那很容易出现某个模块被升级而你却不知道的情况。在另一种情况下，想象你有一个已经开发完成的程序，但是你不想更新它所依赖的第三方模块版本；但你已经开始另一个程序，需要这些第三方模块的版本。</p>
+<h4>defaultdict  - <a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></h4>
+<p>如果访问的key不存在, 则会返回默认值,并加入dict. 当使用<strong>getitem</strong>()方法访问一个不存在的键时(dict[key]这种形式实际上是<strong>getitem</strong>()方法的简化形式)，会调用<strong>missing</strong>()方法获取默认值，并将该键添加到字典中去。从2.5版本开始，如果派生自dict的子类定义了<strong>missing</strong>()方法，当访问不存在的键时#dict[key]会调用<strong>missing</strong>()方法取得默认值。</p>
+<h4>单词统计 - dict的默认值问题</h4>
+<div class="codehilite"><pre><span class="n">strings</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span>
+           <span class="s">&#39;weasel&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">kw</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">kw</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">kw</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>使用setdefault设置默认值   </p>
+<div class="codehilite"><pre><span class="n">strings</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span>
+           <span class="s">&#39;weasel&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">kw</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>使用defaultdict实现单词统计 - defaultdict接受一个类型或者返回默认值的函数</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">strings</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span>
+           <span class="s">&#39;weasel&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">,</span> <span class="s">&#39;kitten&#39;</span><span class="p">,</span> <span class="s">&#39;puppy&#39;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>  <span class="c"># 使用lambda来定义简单的函数</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<h4>counter</h4>
+<p>Counter 是实现的 dict 的一个子类，可以用来方便地计数。</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">colours</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">&#39;Yasoob&#39;</span><span class="p">,</span> <span class="s">&#39;Yellow&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;Ali&#39;</span><span class="p">,</span> <span class="s">&#39;Blue&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;Arham&#39;</span><span class="p">,</span> <span class="s">&#39;Green&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;Ali&#39;</span><span class="p">,</span> <span class="s">&#39;Black&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;Yasoob&#39;</span><span class="p">,</span> <span class="s">&#39;Red&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;Ahmed&#39;</span><span class="p">,</span> <span class="s">&#39;Silver&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">favs</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">colour</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">favs</span><span class="p">)</span>
+
+<span class="c">## 输出:</span>
+<span class="c">## Counter({</span>
+<span class="c">##     &#39;Yasoob&#39;: 2,</span>
+<span class="c">##     &#39;Ali&#39;: 2,</span>
+<span class="c">##     &#39;Arham&#39;: 1,</span>
+<span class="c">##     &#39;Ahmed&#39;: 1</span>
+<span class="c">##  })</span>
+</pre></div>
+
+
+<p>我们也可以在利用它统计一个文件，例如：</p>
+<div class="codehilite"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;filename&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">line_count</span><span class="p">)</span>
+</pre></div>
+
+
+<p>高逼格的统计</p>
+<div class="codehilite"><pre><span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/etc/passwd&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">word_counts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>counter常用</p>
+<div class="codehilite"><pre><span class="c"># elements() 按照counter的计数，重复返回元素</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">elements</span><span class="p">())</span>
+<span class="c"># [&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;]</span>
+
+<span class="c"># most_common(n) 按照counter的计数，按照降序，返回前n项组成的list; n忽略时返回全部</span>
+<span class="n">Counter</span><span class="p">(</span><span class="s">&#39;abracadabra&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># [(&#39;a&#39;, 5), (&#39;r&#39;, 2), (&#39;b&#39;, 2)]</span>
+
+<span class="c"># subtract([iterable-or-mapping]) counter按照相应的元素，计数相减</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="c"># Counter({&#39;a&#39;: 3, &#39;b&#39;: 0, &#39;c&#39;: -3, &#39;d&#39;: -6})</span>
+
+<span class="c"># update([iterable-or-mapping]) 不同于字典的update方法，这里更新counter时，相同的key的value值相加而不是覆盖</span>
+<span class="c"># 实例化 Counter 时， 实际也是调用这个方法</span>
+
+<span class="c"># Counter 间的数学集合操作</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">+</span> <span class="n">d</span>                       <span class="c"># counter相加, 相同的key的value相加</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="n">c</span> <span class="o">-</span> <span class="n">d</span>                       <span class="c"># counter相减, 相同的key的value相减，只保留正值得value</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="n">c</span> <span class="o">&amp;</span> <span class="n">d</span>                       <span class="c"># 交集:  取两者都有的key,value取小的那一个</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">c</span> <span class="o">|</span> <span class="n">d</span>                       <span class="c"># 并集:  汇聚所有的key, key相同的情况下，取大的value</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+
+<span class="c"># 常见做法:</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>                 <span class="c"># 继承自字典的.values()方法返回values的列表，再求和</span>
+<span class="n">c</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                       <span class="c"># 继承自字典的.clear()方法，清空counter</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>                         <span class="c"># 返回key组成的list</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>                          <span class="c"># 返回key组成的set</span>
+<span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>                         <span class="c"># 转化成字典</span>
+<span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>                       <span class="c"># 转化成(元素，计数值)组成的列表</span>
+<span class="n">Counter</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">list_of_pairs</span><span class="p">))</span>    <span class="c"># 从(元素，计数值)组成的列表转化成Counter</span>
+<span class="n">c</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[:</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>       <span class="c"># 最小n个计数的(元素，计数值)组成的列表</span>
+<span class="n">c</span> <span class="o">+=</span> <span class="n">Counter</span><span class="p">()</span>                  <span class="c"># 利用counter的相加来去除负值和0的值</span>
+</pre></div>
+
+
+<h4>namedtuple和enum.Enum</h4>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="k">class</span> <span class="nc">Species</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">cat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">dog</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">horse</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">aardvark</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">butterfly</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">owl</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">platypus</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">dragon</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">unicorn</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="c"># 依次类推</span>
+
+    <span class="c"># 但我们并不想关心同一物种的年龄，所以我们可以使用一个别名</span>
+    <span class="n">kitten</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c"># (译者注：幼小的猫咪)</span>
+    <span class="n">puppy</span> <span class="o">=</span> <span class="mi">2</span>   <span class="c"># (译者注：幼小的狗狗)</span>
+
+<span class="n">Animal</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&#39;Animal&#39;</span><span class="p">,</span> <span class="s">&#39;name age type&#39;</span><span class="p">)</span>
+<span class="n">perry</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Perry&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Species</span><span class="o">.</span><span class="n">cat</span><span class="p">)</span>
+<span class="n">drogon</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Drogon&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Species</span><span class="o">.</span><span class="n">dragon</span><span class="p">)</span>
+<span class="n">tom</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Tom&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Species</span><span class="o">.</span><span class="n">cat</span><span class="p">)</span>
+<span class="n">charlie</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Charlie&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Species</span><span class="o">.</span><span class="n">kitten</span><span class="p">)</span>
+</pre></div>
+
+
+<h4><a href="https://docs.python.org/3/library/collections.html?highlight=deque#deque-objects">deque</a></h4>
+<p>functions: append, appendleft, pop, popleft, extend, extendleft, reverse, rotate, insert, remove, index, count, copy, maxlen...</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="s">&#39;ghi&#39;</span><span class="p">)</span>                 <span class="c"># make a new deque with three items</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>                   <span class="c"># iterate over the deque&#39;s elements</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="n">G</span>
+<span class="n">H</span>
+<span class="n">I</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;j&#39;</span><span class="p">)</span>                    <span class="c"># add a new entry to the right side</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">)</span>                <span class="c"># add a new entry to the left side</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>                                <span class="c"># show the representation of the deque</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;j&#39;</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                          <span class="c"># return and remove the rightmost item</span>
+<span class="s">&#39;j&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>                      <span class="c"># return and remove the leftmost item</span>
+<span class="s">&#39;f&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>                          <span class="c"># list the contents of the deque</span>
+<span class="p">[</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                             <span class="c"># peek at leftmost item</span>
+<span class="s">&#39;g&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                            <span class="c"># peek at rightmost item</span>
+<span class="s">&#39;i&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>                <span class="c"># list the contents of a deque in reverse</span>
+<span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;h&#39;</span> <span class="ow">in</span> <span class="n">d</span>                         <span class="c"># search the deque</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="s">&#39;jkl&#39;</span><span class="p">)</span>                  <span class="c"># add multiple elements at once</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;j&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                      <span class="c"># right rotation</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;j&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                     <span class="c"># left rotation</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;j&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">deque</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>               <span class="c"># make a new deque in reverse order</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;j&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                        <span class="c"># empty the deque</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>                          <span class="c"># cannot pop from an empty deque</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">File</span> <span class="s">&quot;&lt;pyshell#6&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">-</span><span class="n">toplevel</span><span class="o">-</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">pop</span> <span class="kn">from</span> <span class="nn">an</span> <span class="nn">empty</span> <span class="nn">deque</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">extendleft</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">)</span>              <span class="c"># extendleft() reverses the input order</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">deque</span><span class="p">([</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<h4>enumerate</h4>
+<p>枚举(enumerate)是Python内置函数。它允许我们遍历数据并自动计数，enumerate也接受一些可选参数，这使它更有用。</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">counter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="c"># 可选参数允许我们定制从哪个数字开始枚举</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;apple&#39;</span><span class="p">,</span> <span class="s">&#39;banana&#39;</span><span class="p">,</span> <span class="s">&#39;grapes&#39;</span><span class="p">,</span> <span class="s">&#39;pear&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="c"># 输出:</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;apple&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;banana&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;grapes&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;pear&#39;</span><span class="p">)</span>    
+
+<span class="c"># 你还可以用来创建包含索引的元组列表， 例如：</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;apple&#39;</span><span class="p">,</span> <span class="s">&#39;banana&#39;</span><span class="p">,</span> <span class="s">&#39;grapes&#39;</span><span class="p">,</span> <span class="s">&#39;pear&#39;</span><span class="p">]</span>
+<span class="n">counter_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counter_list</span><span class="p">)</span>
+<span class="c"># 输出: [(1, &#39;apple&#39;), (2, &#39;banana&#39;), (3, &#39;grapes&#39;), (4, &#39;pear&#39;)]</span>
+</pre></div>
+
+
+<h1>自省</h1>
+<h4>dir</h4>
+<p>它返回一个列表，列出了一个对象所拥有的属性和方法。</p>
+<div class="codehilite"><pre><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="c"># Output: [&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;,</span>
+<span class="c"># &#39;__delslice__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;,</span>
+<span class="c"># &#39;__getitem__&#39;, &#39;__getslice__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;,</span>
+<span class="c"># &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;,</span>
+<span class="c"># &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;,</span>
+<span class="c"># &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__setslice__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;,</span>
+<span class="c"># &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;,</span>
+<span class="c"># &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</span>
+</pre></div>
+
+
+<h4>type和id</h4>
+<p>type函数返回一个对象的类型。举个例子：</p>
+<div class="codehilite"><pre><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;str&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([]))</span>
+<span class="c"># Output: &lt;type &#39;list&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">({}))</span>
+<span class="c"># Output: &lt;type &#39;dict&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">dict</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;type&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;int&#39;&gt;</span>
+</pre></div>
+
+
+<p>id()函数返回任意不同种类对象的唯一ID，举个例子：</p>
+<div class="codehilite"><pre><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Yasoob&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="c"># Output: 139972439030304</span>
+</pre></div>
+
+
+<h4><a href="https://docs.python.org/3/library/inspect.html?highlight=inspect#module-inspect">inspect模块</a></h4>
+<p>inspect模块也提供了许多有用的函数，来获取活跃对象的信息。比方说，你可以查看一个对象的成员，只需运行：</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="k">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="c"># Output: [(&#39;__add__&#39;, &lt;slot wrapper &#39;__add__&#39; of ... ...</span>
+</pre></div>
+
+
+<h1>各种推导式(comprehensions)</h1>
+<h4>列表(list)推导式</h4>
+<div class="codehilite"><pre><span class="n">multiples</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
+<span class="c"># Output: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]</span>
+
+<span class="n">squared</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+
+
+<h4>字典(dict)推导式</h4>
+<div class="codehilite"><pre><span class="n">mcase</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&#39;Z&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="n">mcase_frequency</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">mcase</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">mcase</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mcase</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c"># mcase_frequency == {&#39;a&#39;: 17, &#39;z&#39;: 3, &#39;b&#39;: 34}</span>
+</pre></div>
+
+
+<h4>集合(set)推导式</h4>
+<div class="codehilite"><pre><span class="n">squared</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">squared</span><span class="p">)</span>
+<span class="c"># Output: {1, 4}</span>
+</pre></div>
+
+
+<h1>异常</h1>
+<p>最基本的术语里我们知道了try/except从句。可能触发异常产生的代码会放到try语句块里，而处理异常的代码会在except语句块里实现。
+这是一个简单的例子：</p>
+<div class="codehilite"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">EOFError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;An EOF error occurred.&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+<span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;An error occurred.&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c"># 包裹到finally从句中的代码不管异常是否触发都将会被执行。</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;This would be printed whether or not an exception occurred!&quot;</span><span class="p">)</span>    
+
+<span class="c"># 最后一种方式会捕获所有异常：</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="c"># 打印一些异常日志，如果你想要的话</span>
+    <span class="k">raise</span>    
+
+<span class="c"># try/else</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;I am sure no exception is going to occur!&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;exception&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c"># 这里的代码只会在try语句里没有触发异常时运行,</span>
+    <span class="c"># 但是这里的异常将 *不会* 被捕获</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;This would only run if no exception occurs. And an error here &#39;</span>
+          <span class="s">&#39;would NOT be caught.&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;This would be printed in every case.&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>lambda表达式</h1>
+<h4>原型</h4>
+<div class="codehilite"><pre>lambda 参数:操作(参数)
+</pre></div>
+
+
+<p>例子</p>
+<div class="codehilite"><pre>add = lambda x, y: x + y
+
+print(add(3, 5))
+# Output: 8
+</pre></div>
+
+
+<p>列表排序</p>
+<div class="codehilite"><pre>a = [(1, 2), (4, 1), (9, 10), (13, -3)]
+a.sort(key=lambda x: x[1])
+
+print(a)
+# Output: [(13, -3), (4, 1), (1, 2), (9, 10)]
+</pre></div>
+
+
+<p>列表并行排序</p>
+<div class="codehilite"><pre>data = zip(list1, list2)
+data = sorted(data)
+list1, list2 = map(lambda t: list(t), zip(*data))
+</pre></div>
+
+
+<h1><a href="https://wiki.python.org/moin/Powerful%20Python%20One-Liners">实用的一行式</a></h1>
+<h4>简易Web Server</h4>
+<div class="codehilite"><pre><span class="c"># Python 2</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+
+<span class="c"># Python 3</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span>
+</pre></div>
+
+
+<h4>漂亮的打印</h4>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Yasoob&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">&#39;undefined&#39;</span><span class="p">,</span> <span class="s">&#39;personality&#39;</span><span class="p">:</span> <span class="s">&#39;awesome&#39;</span><span class="p">}</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+
+<span class="c"># 快速漂亮的从文件打印出json数据</span>
+<span class="n">cat</span> <span class="nb">file</span><span class="o">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">json</span><span class="o">.</span><span class="n">tool</span>
+</pre></div>
+
+
+<h4>脚本性能分析</h4>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">cProfile</span> <span class="n">my_script</span><span class="o">.</span><span class="n">py</span>
+<span class="c"># 备注：cProfile是一个比profile更快的实现，因为它是用c写的</span>
+</pre></div>
+
+
+<h4>CSV转换为json</h4>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;import csv,json;print json.dumps(list(csv.reader(open(&#39;csv_file.csv&#39;))))&quot;</span>
+<span class="c"># 确保更换csv_file.csv为你想要转换的csv文件</span>
+</pre></div>
+
+
+<h4>列表辗平</h4>
+<div class="codehilite"><pre><span class="n">a_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">a_list</span><span class="p">)))</span>
+<span class="c"># Output: [1, 2, 3, 4, 5, 6]</span>
+
+<span class="c"># or</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">a_list</span><span class="p">)))</span>
+<span class="c"># Output: [1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+
+
+<h1>Python 2</h1>
+<h4>for/else</h4>
+<p>else在没有break, 且循环结束时执行</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">container</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">search_something</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="c"># Found it!</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c"># Didn&#39;t find anything..</span>
+    <span class="n">not_found_in_container</span><span class="p">()</span>
+</pre></div>
+
+
+<p>找出2到10之间的数字的因子, 和质数</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;equals&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># loop fell through without finding a factor</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;is a prime number&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>使用C扩展</h1>
+<p>开发者有三种方法可以在自己的Python代码中来调用C编写的函数-ctypes，SWIG，Python/C API。每种方式也都有各自的利弊。</p>
+<p>我们要明确为什么要在Python中调用C？ </p>
+<p>常见原因如下：     </p>
+<ol>
+<li>你要提升代码的运行速度，而且你知道C要比Python快50倍以上  </li>
+<li>C语言中有很多传统类库，而且有些正是你想要的，但你又不想用Python去重写它们  </li>
+<li>想对从内存到文件接口这样的底层资源进行访问  </li>
+<li>不需要理由，就是想这样做  </li>
+</ol>
+<h1>文件操作 open</h1>
+<div class="codehilite"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+
+
+<p>open的第一个参数是文件名。第二个(mode 打开模式)决定了这个文件如何被打开:</p>
+<ol>
+<li>如果你想读取文件，传入r</li>
+<li>如果你想读取并写入文件，传入r+</li>
+<li>如果你想覆盖写入文件，传入w</li>
+<li>如果你想在文件末尾附加内容，传入a</li>
+</ol>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">jpgdata</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;</span><span class="se">\xff\xd8</span><span class="s">&#39;</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a JPEG file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a random file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+
+<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;summary.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+    <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jpgdata</span><span class="p">))</span>
+</pre></div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
