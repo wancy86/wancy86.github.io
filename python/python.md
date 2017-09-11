@@ -608,7 +608,7 @@ with io.open('summary.txt', 'w', encoding='utf-8') as outf:
 协程则是数据的消费者
 
 回顾下生成器
-```
+```python
 def fib():
     a, b = 0, 1
     while True:
@@ -620,7 +620,7 @@ for i in fib():
 ```
 协程  
 发送的值会被yield接收。我们为什么要运行next()方法呢？这样做正是为了启动一个协程。就像协程中包含的生成器并不是立刻执行，而是通过next()方法来响应send()方法。因此，你必须通过next()方法来执行yield表达式。
-```
+```python
 # Python实现的grep就是个很好的例子：
 def grep(pattern):
     print("Searching for", pattern)
