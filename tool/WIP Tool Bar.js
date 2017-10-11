@@ -15,11 +15,10 @@
     $('#UserName').val('mwan');
     $('#password').val('123123123');
     $('#Login').click();
-  }, 1000);
-
+  }, 500);
 
   var html = '';
-  html += '<div style="top: 0px;left: 0px;height:60px;">';
+  html += '<div style="top: 0px;left: 0px;height:60px;margin-top:30px;">';
   html += '    <input type="text" id="TaskId">';
   html += '    <button type="button" id="editTask">GO</button>';
   html += '</div>';
@@ -27,8 +26,7 @@
   setTimeout(function() {
     $('#top').html('').append(html);
     $('#contactinfo').html('');
-  }, 3000);
-
+  }, 4000);
 
   $('#editTask').die().live('click', function() {
     var TaskId = $('#TaskId').val().trim();
@@ -50,35 +48,36 @@
   window.getItemInfo = function(wip, lastone) {
     Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function(resp) {
       var info = $.parseJSON(resp);
+      //console.log(info);
       var data = {
-        UserName: info.UserName,
-        WIP: wip,
         StatusType: info.StatusType,
+        WIP: wip,
+        UserName: info.UserName,
         TaskName: info.TaskName
       };
       window.arr.push(data);
       if (lastone) {
         window.arr.sort(function(a, b) {
-          var aa = a.UserName;
-          var bb = b.UserName;
+          var aa = a.StatusType;
+          var bb = b.StatusType;
           return aa > bb ? 1 : (aa == bb ? 0 : -1);
         });
         console.log(window.arr);
+        // var str = '';
+        // for (var i = 0; i < window.arr.length; i++) {
+        //   str += 'wip: ' + arr[i].wip + ', ' + 'StatusType: ' + arr[i].StatusType + ', ' + 'UserName: ' + arr[i].UserName + ', ' + 'TaskName: ' + arr[i].TaskName + '\n';
+        // }
       }
     });
   };
 
   window.getItemsInfo = function(wips) {
-        Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max?preprocess=true');
-        window.arr = [];
-        for (var i = wips.length - 1; i >= 0; i--) {
-          var wip = wips[i];
-          var lastone = (i === 0) ? 1 : 0;
-          getItemInfo(wip, lastone);
-        }
+    Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max?preprocess=true');
+    window.arr = [];
+    for (var i = wips.length - 1; i >= 0; i--) {
+      var wip = wips[i];
+      var lastone = (i === 0) ? 1 : 0;
+      getItemInfo(wip, lastone);
+    }
   };
 })();
-
-
-
-

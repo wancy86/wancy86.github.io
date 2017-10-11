@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flex Calculator</title>
+</head>
+<style type="text/css">
+.col {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+    width: 310px;
+}
+
+.c2 {
+    margin: 1px;
+    border: 1px solid #BBB;    
+    text-align: center;
+    background-color: #ccc; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c2:hover {
+    background-color: #ddd;
+
+}
+
+.left{
+    display: flex;
+    /*flex-direction: row;*/
+    flex-wrap: wrap;
+    /*justify-content: flex-start;*/
+
+}
+.left div{
+    flex-basis: 60px;
+    min-height: 60px;
+    flex-grow: 1;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+}
+.right div{
+    flex-basis: 60px;
+    min-width: 60px;
+}
+
+.hcol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+</style>
+
+<body>
+    <div class="col">
+        <div class="left">
+            <div class="c2">
+                <p>Num Lock</p>
+            </div>
+            <div class="c2">
+                <p>/</p>
+            </div>
+            <div class="c2">
+                <p>*</p>
+            </div>
+            <div class="c2">
+                <p>7</p>
+            </div>
+            <div class="c2">
+                <p>8</p>
+            </div>
+            <div class="c2">
+                <p>9</p>
+            </div>
+            <div class="c2">
+                <p>4</p>
+            </div>
+            <div class="c2">
+                <p>5</p>
+            </div>
+            <div class="c2">
+                <p>6</p>
+            </div>
+            <div class="c2">
+                <p>1</p>
+            </div>
+            <div class="c2">
+                <p>2</p>
+            </div>
+            <div class="c2">
+                <p>3</p>
+            </div>
+            <div class="c2" style="flex: 68;min-width: 60px;">
+                <p>0</p>
+            </div>
+            <div class="c2" style="flex: 33;min-width: 60px;">
+                <p>.</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="c2">
+                <p>-</p>
+            </div>
+            <div class="c2 hcol" style="flex:2;">
+                <p>+</p>
+            </div>
+            <div class="c2 hcol" style="flex:2;">
+                <p>Enter</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
