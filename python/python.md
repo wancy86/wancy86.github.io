@@ -600,3 +600,43 @@ else:
 with io.open('summary.txt', 'w', encoding='utf-8') as outf:
     outf.write(text % len(jpgdata))
 ```
+
+
+# 协程
+
+生成器是数据的生产者
+协程则是数据的消费者
+
+回顾下生成器
+```python
+def fib():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a+b
+
+for i in fib():
+    print i
+```
+协程  
+发送的值会被yield接收。我们为什么要运行next()方法呢？这样做正是为了启动一个协程。就像协程中包含的生成器并不是立刻执行，而是通过next()方法来响应send()方法。因此，你必须通过next()方法来执行yield表达式。
+```python
+# Python实现的grep就是个很好的例子：
+def grep(pattern):
+    print("Searching for", pattern)
+    while True:
+        line = (yield)
+        if pattern in line:
+            print(line)
+
+search = grep('coroutine')
+next(search)
+#output: Searching for coroutine
+search.send("I love you")
+search.send("Don't you love me?")
+search.send("I love coroutine instead!")
+# output: I love coroutine instead!
+
+# 关闭协程
+search.close()
+```
