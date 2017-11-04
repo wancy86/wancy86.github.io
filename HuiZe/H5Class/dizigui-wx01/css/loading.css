@@ -1,0 +1,231 @@
+/*-----------------------------加载进度动画样式---------------------------------------*/
+
+/*!*加载进度那吃豆动画*!*/
+@-webkit-keyframes rotate_pacman_half_up {
+    0% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg); }
+
+    50% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg); }
+
+    100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg); } }
+
+@keyframes rotate_pacman_half_up {
+    0% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg); }
+
+    50% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg); }
+
+    100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg); } }
+
+@-webkit-keyframes rotate_pacman_half_down {
+    0% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg); }
+
+    50% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg); }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg); } }
+
+@keyframes rotate_pacman_half_down {
+    0% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg); }
+
+    50% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg); }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg); } }
+
+@-webkit-keyframes pacman-balls {
+    75% {
+        opacity: 0.7; }
+
+    100% {
+        -webkit-transform: translate(-100px, -6.25px);
+        transform: translate(-100px, -6.25px); } }
+
+@keyframes pacman-balls {
+    75% {
+        opacity: 0.7; }
+
+    100% {
+        -webkit-transform: translate(-100px, -6.25px);
+        transform: translate(-100px, -6.25px); } }
+
+.pacman {
+    position: relative; }
+.pacman > div:nth-child(2) {
+    -webkit-animation: pacman-balls 1s 0s infinite linear;
+    animation: pacman-balls 1s 0s infinite linear; }
+.pacman > div:nth-child(3) {
+    -webkit-animation: pacman-balls 1s 0.33s infinite linear;
+    animation: pacman-balls 1s 0.33s infinite linear; }
+.pacman > div:nth-child(4) {
+    -webkit-animation: pacman-balls 1s 0.66s infinite linear;
+    animation: pacman-balls 1s 0.66s infinite linear; }
+.pacman > div:nth-child(5) {
+    -webkit-animation: pacman-balls 1s 0.99s infinite linear;
+    animation: pacman-balls 1s 0.99s infinite linear; }
+.pacman > div:first-of-type {
+    width: 0px;
+    height: 0px;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #DFA63D;
+    border-left: 25px solid #DFA63D;
+    border-bottom: 25px solid #DFA63D;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_up 0.5s 0s infinite;
+    animation: rotate_pacman_half_up 0.5s 0s infinite; }
+.pacman > div:nth-child(2) {
+    width: 0px;
+    height: 0px;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #DFA63D;
+    border-left: 25px solid #DFA63D;
+    border-bottom: 25px solid #DFA63D;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_down 0.5s 0s infinite;
+    animation: rotate_pacman_half_down 0.5s 0s infinite;
+    margin-top: -50px; }
+.pacman > div:nth-child(3), .pacman > div:nth-child(4), .pacman > div:nth-child(5), .pacman > div:nth-child(6) {
+    background-color: #DFA63D;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    -webkit-transform: translate(0, -6.25px);
+    -ms-transform: translate(0, -6.25px);
+    transform: translate(0, -6.25px);
+    top: 25px;
+    left: 100px; }
+
+.loaders{
+    z-index: 1100;
+    padding-top: 55%;
+    margin-left: 40%;
+    display: none;
+}
+
+
+/*!*加载进度一开始总加载，太极动画*!*/
+.mainLoad{
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.fengmian{
+    width: 100%;
+}
+.shou{
+    width: 6.5625%;
+    position: absolute;
+    top: 72%;
+    left: 47.5%;
+}
+.mainLoad div{
+    opacity: 1;
+    position: fixed;
+    top:30%;
+    left:30%;
+}
+
+.loading4 {
+    -webkit-box-sizing: content-box!important;
+    -moz-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+    background:none repeat scroll 0 0 #FFFFFF;
+    border-color:#000000;
+    border-radius:100%;
+    border-style:solid;
+    border-width:.02592rem .02592rem .648rem;
+    height:.62208rem;
+    position:relative;
+    width:1.24416rem;
+
+    /* css3 animation */
+    -webkit-animation:anim4 1s linear infinite;
+    -moz-animation:anim4 2s linear infinite;
+    -ms-animation:anim4 1s linear infinite;
+    -o-animation:anim4 1s linear infinite;
+    animation:anim4 1s linear infinite;
+}
+.loading4:before {
+    -webkit-box-sizing: content-box!important;
+    -moz-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+    background:none repeat scroll 0 0 #FFFFFF;
+    border:.24rem solid #000000;
+    border-radius:100%;
+    content:"";
+    height:.15552rem;
+    left:0;
+    position:absolute;
+    top:50%;
+    width:.15552rem;
+}
+.loading4:after {
+    -webkit-box-sizing: content-box!important;
+    -moz-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+    background:none repeat scroll 0 0 #000000;
+    border:.23328rem solid #FFFFFF;
+    border-radius:100%;
+    content:"";
+    height:.15552rem;
+    left:50%;
+    position:absolute;
+    top:50%;
+    width:.15552rem;
+}
+
+/* css3 keyframes - animation 4 */
+@-webkit-keyframes anim4 {
+    from { -webkit-transform:rotateZ(0deg); }
+    50% { -webkit-transform:rotateZ(180deg); }
+    to { -webkit-transform:rotateZ(360deg); }
+}
+@-moz-keyframes anim4 {
+    from { -moz-transform:rotateZ(0deg); }
+    50% { -moz-transform:rotateZ(180deg); }
+    to { -moz-transform:rotateZ(360deg); }
+}
+@-ms-keyframes anim4 {
+    from { -ms-transform:rotateZ(0deg); }
+    50% { -ms-transform:rotateZ(180deg); }
+    to { -ms-transform:rotateZ(360deg); }
+}
+@-o-keyframes anim4 {
+    from { -o-transform:rotateZ(0deg); }
+    50% { -o-transform:rotateZ(180deg); }
+    to { -o-transform:rotateZ(360deg); }
+}
+@keyframes anim4 {
+    from { transform:rotateZ(0deg); }
+    50% { transform:rotateZ(180deg); }
+    to { transform:rotateZ(360deg); }
+}
+
+/*!*加载进度一开始总LOAD*!*/
+
+/*-----------------------------/加载进度动画样式---------------------------------------*/

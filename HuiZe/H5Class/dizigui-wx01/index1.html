@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>弟子规</title>
+    <script type="text/javascript">
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin1 = ua.indexOf('micromessenger') != -1;
+        if (!isWeixin1) {
+           //window.location="forbidden.html";
+        }
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="http://www.zehuiwenhua.com/h5class/dizigui-wx2/css/jquery.mobile-1.4.5.min.css"  >
+    <link type="text/css" rel="stylesheet" href="http://www.zehuiwenhua.com/h5class/dizigui-wx2/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="http://www.zehuiwenhua.com/h5class/dizigui-wx2/css/loading.css?v=1.0">
+    <link type="text/css" rel="stylesheet" href="http://www.zehuiwenhua.com/h5class/dizigui-wx2/css/style.min.css?v=1.2">
+    <link type="text/css" rel="stylesheet" href="http://www.zehuiwenhua.com/h5class/dizigui-wx2/css/case.min.css?v=1.4">
+
+
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/commonFunctions.min.js?v=1.0"></script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/islider.min.js?v=1.0"></script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/draggabilly.pkgd.min.js?v=1.0"></script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/main1.min.js?v=1.4"></script><!--这里引用地址不同-->
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/case.min.js?v=1.5"></script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/content.min.js?v=1.2"></script>
+
+    <script>
+        $(document).bind('mobileinit',function(){
+            $.mobile.changePage.defaults.changeHash = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
+        });
+    </script>
+    <script type="text/javascript" src="http://www.zehuiwenhua.com/h5class/dizigui-wx2/js/jquery.mobile-1.4.5.min.js"></script>
+
+    <audio class="media"></audio>
+    <audio class="ckM" src="" preload="auto"></audio>
+    <audio class="bgm" loop></audio>
+    <div class="ui-popup-screen ui-overlay-a in" id="myLoad-screen"></div>
+    <div class="mainLoad"> <div ><div class="loading4" ></div> </div> <img  class="fengmian" style="display: none"> <img  class="shou" style="display: none"> </div>
+</head>
+
+<body>
+<div id="wrapper" >
+    <!--转屏幕提示-->
+    <div id="orientLayer" class="mod-orient-layer">
+        <div class="mod-orient-layer__content">
+            <i class="icon mod-orient-layer__icon-orient"></i>
+            <div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
+        </div>
+    </div>
+    <div id="mapCon"></div>
+    <div id="head" > <img class="navbar-fixed-top"><div class="muluCon"></div></div>
+    <div id="center">
+        <div class="loaders">
+            <div class="pacman">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="gushiCon">
+            <div id="videoCon">
+               <!-- <video id="my_video" class="video-js"  webkit-playsinline  playsinline
+                        controls  onwebkitfullscreenchange="OnFullscreen(this);"> </video>-->
+                <!--<video id="my_video" class="video-js"  webkit-playsinline  playsinline  x-webkit-airplay="true"
+                       x5-video-player-type="h5"  x5-video-player-fullscreen="true"  controls  onwebkitfullscreenchange="OnFullscreen(this);"> </video>-->
+            </div>
+            <div class="gushiJJ">
+                <img>
+                <p></p>
+            </div>
+        </div>
+        <div id="caseCon">
+            <div id="rightSideCon">
+                <a href="#" id="you" class="btn_you" name="btn_you"></a>
+                <a href="#" id="zuo" class="btn_zuo" name="btn_zuo"></a>
+                <a href="#" id="langdu" class="btn_ld" name="btn_ld"></a>
+                <a href="#" id="zhushi" class="btn_zhus" name="btn_zhus"></a>
+                <a href="#" id="jinyi" class="btn_jy" name="btn_jy"></a>
+                <a href="#" id="yingyi" class="btn_yy" name="btn_yy"></a>
+            </div>
+            <div id="moduleCont"> </div>
+            <img class="btn_dlb" name="btn_dlb">
+            <img class="btn_sy" name="btn_sy">
+            <img class="btn_zs" name="btn_zs">
+            <div data-role="popup" id="myPopup" data-overlay-theme="a">
+                <a href="#" data-rel="back" class="close_btn ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+                <img><img>
+            </div>
+            <div data-role="popup" id="tsKuang" class="ui-content"  data-position-to="window" data-transition="fade" style="opacity:0.95;">
+                <h4>当前是最后一页</h4>
+            </div>
+        </div>
+        <div id="testCon">
+            <a href="#" data-rel="popup" data-position-to="window"  class="tj_btn" name="tj_btn" type="button"  data-role="none"   style="display: none"></a>
+            <!--对错面板-->
+            <div data-role="popup" id="dcKuang" data-overlay-theme="a" data-dismissible="false" data-transition="slideup">
+                <img>
+                <img>
+                <span><h4 style="display: none" class="answer"></h4></span>
+                <a href="#" class="jx_btn" name="jx_btn" type="button"  data-rel="back" data-role="none"></a>
+                <a href="#" class="zw_btn" name="zw_btn" type="button"   data-rel="back" data-role="none" style="display: none"></a>
+                <a href="#" class="xyk_btn" name="xyk_btn" type="button"  data-rel="back"  data-role="none" style="display: none"></a>
+            </div>
+            <!--/对错面板-->
+            <div id="moduleContT"> </div>
+        </div>
+    </div>
+
+    <div id="bottom">
+        <!-- 翻页按钮-->
+        <a href="#" class="nav_btn btn_prev" title="prev" style="display: none" data-role="none"></a>
+        <a href="#" class="nav_btn btn_next" title="next" style="display: none" data-role="none"></a>
+
+      <!-- 顶部导航-->
+        <div id="navigation" class="navbar-fixed-top center-block">
+            <p class="keti">弟子规（1）</p>
+            <a href="#" id="fanhui" class="btn_back" name="btn_back"></a>
+           <!-- <a href="#" id="bgm" class="btn_bgm" name="btn_bgm"></a>-->
+        </div>
+        <h6 class="lx_page navbar-fixed-bottom center-block" style="width: 7.5%;display: none;margin-bottom: 1%">1/7</h6>
+    </div>
+
+</div>
+<!--<script type="text/javascript">
+    //console.log(document.head.innerHTML);
+    console.log(document.body.innerHTML);
+</script>-->
+</body>
+
+</html>
