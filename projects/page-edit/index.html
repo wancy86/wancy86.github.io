@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>动态内容配置系统</title>
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://cdn.bootcss.com/angular-resource/1.5.8/angular-resource.js"></script>
+    <script src="https://cdn.bootcss.com/ngDraggable/0.1.11/ngDraggable.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/angular-dragula/1.2.8/angular-dragula.js"></script> -->
+    <!-- <script src="https://cdn.bootcss.com/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.js"></script> -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/angular-dragula/1.2.8/dragula.css" rel="stylesheet">
+    
+    <script src="app.js"></script>
+    <style>
+    .tmp-list {
+        border-right: 1px solid #ccc;
+        min-height: 760px;
+    }
+
+    .tmp-layout {
+        border-right: 1px solid #ccc;
+        min-height: 760px;
+    }
+
+    .element-edit {
+        border-right: 1px solid #ccc;
+        min-height: 760px;
+    }
+
+    .component {
+        padding: 1px;
+        border: 1px solid #ccc;
+        margin: 2px;
+    }
+    </style>
+</head>
+
+<body ng-app="DynamicPageEdit" ng-controller="MainController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="page-header">
+                <h1>动态内容配置系统 <small>-惠泽学堂</small></h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- 页面模板列表 -->
+            <div class="col-md-2 tmp-list ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ui>
+                            <li><a href="#">首页1</a></li>
+                            <li><a href="#">首页2</a></li>
+                            <li><a href="#">专题页1</a></li>
+                        </ui>
+                    </div>
+                </div>
+                <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
+                    <div class="col-md-12">
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="1">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="2">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="3">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="4">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="5">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            <img width="100%" src="http://placehold.it/200x50" alt="6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面布局控制区域 -->
+            <div class="col-md-4 tmp-layout">
+                <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
+                    <div class="col-md-12">
+                        <div class="component" ng-drag="true">
+                            111<img width="100%" src="http://placehold.it/300x50" alt="1">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            222<img width="100%" src="http://placehold.it/300x50" alt="2">
+                        </div>
+                        <div class="component" ng-drag="true">
+                            333<img width="100%" src="http://placehold.it/300x50" alt="3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 组件内容调整区域 -->
+            <div class="col-md-6 element-edit">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+
+</html>
