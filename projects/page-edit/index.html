@@ -9,13 +9,12 @@
     <script src="https://cdn.bootcss.com/angular.js/1.5.8/angular.js"></script>
     <script src="https://cdn.bootcss.com/angular-ui-router/1.0.3/angular-ui-router.js"></script>
     <script src="https://cdn.bootcss.com/angular-resource/1.5.8/angular-resource.js"></script>
-    <script src="https://cdn.bootcss.com/ngDraggable/0.1.11/ngDraggable.js"></script>
-    <!-- <script src="https://cdn.bootcss.com/angular-dragula/1.2.8/angular-dragula.js"></script> -->
+    <script src="https://cdn.bootcss.com/angular-dragula/1.2.8/angular-dragula.js"></script>
+    <link href="https://cdn.bootcss.com/angular-dragula/1.2.8/dragula.css" rel="stylesheet">
+    <!-- <script src="https://cdn.bootcss.com/ngDraggable/0.1.11/ngDraggable.js"></script> -->
     <!-- <script src="https://cdn.bootcss.com/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.js"></script> -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/angular-dragula/1.2.8/dragula.css" rel="stylesheet">
-    
     <script src="app.js"></script>
     <style>
     .tmp-list {
@@ -40,6 +39,14 @@
     }
     </style>
 </head>
+<!-- 
+自下而上的设计
+组件设计
+组件编辑
+
+模板设计
+模板编辑
+ -->
 
 <body ng-app="DynamicPageEdit" ng-controller="MainController">
     <div class="container-fluid">
@@ -61,24 +68,24 @@
                     </div>
                 </div>
                 <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
-                    <div class="col-md-12">
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="1">
+                    <div class="col-md-12 container" dragula='bag1'>
+                        <div class="component">
+                            <div>111<img width="100%" src="http://placehold.it/200x50" alt="1"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="2">
+                        <div class="component">
+                            <div>222<img width="100%" src="http://placehold.it/200x50" alt="2"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="3">
+                        <div class="component">
+                            <div>333<img width="100%" src="http://placehold.it/200x50" alt="3"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="4">
+                        <div class="component">
+                            <div>444<img width="100%" src="http://placehold.it/200x50" alt="4"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="5">
+                        <div class="component">
+                            <div>555<img width="100%" src="http://placehold.it/200x50" alt="5"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            <img width="100%" src="http://placehold.it/200x50" alt="6">
+                        <div class="component">
+                            <div>666<img width="100%" src="http://placehold.it/200x50" alt="6"></div>
                         </div>
                     </div>
                 </div>
@@ -86,21 +93,27 @@
             <!-- 页面布局控制区域 -->
             <div class="col-md-4 tmp-layout">
                 <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
-                    <div class="col-md-12">
-                        <div class="component" ng-drag="true">
-                            111<img width="100%" src="http://placehold.it/300x50" alt="1">
+                    <div class="col-md-12 container" dragula='bag2'>
+                        <div class="component">
+                            <div>111<img width="100%" src="http://placehold.it/300x50" alt="1"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            222<img width="100%" src="http://placehold.it/300x50" alt="2">
+                        <div class="component">
+                            <div>222<img width="100%" src="http://placehold.it/300x50" alt="2"></div>
                         </div>
-                        <div class="component" ng-drag="true">
-                            333<img width="100%" src="http://placehold.it/300x50" alt="3">
+                        <div class="component">
+                            <div>333<img width="100%" src="http://placehold.it/300x50" alt="3"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- 组件内容调整区域 -->
-            <div class="col-md-6 element-edit">
+            <div class="col-md-6 element-edit container" dragula='bag3'>
+                <div class="component">
+                    111<img width="100%" src="http://placehold.it/400X50" alt="1">
+                </div>
+                <div class="component">
+                    222<img width="100%" src="http://placehold.it/400X50" alt="1">
+                </div>
             </div>
         </div>
     </div>
