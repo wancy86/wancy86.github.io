@@ -5,16 +5,19 @@
     <title>动态内容配置系统</title>
     <!-- <meta http-equiv="refresh" content="2"> -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.5.8/angular.js"></script>
-    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.3/angular-ui-router.js"></script>
-    <script src="https://cdn.bootcss.com/angular-resource/1.5.8/angular-resource.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.js"></script>
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/angular/angular-resource.js"></script>
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/angular-ui/angular-ui-router.js"></script>
     <script src="https://cdn.bootcss.com/angular-dragula/1.2.8/angular-dragula.js"></script>
     <link href="https://cdn.bootcss.com/angular-dragula/1.2.8/dragula.css" rel="stylesheet">
     <!-- <script src="https://cdn.bootcss.com/ngDraggable/0.1.11/ngDraggable.js"></script> -->
     <!-- <script src="https://cdn.bootcss.com/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.js"></script> -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
+    <!-- https://cdn.bootcss.com/ionic/1.3.2/fonts/ionicons.svg -->
     <script src="app.js"></script>
     <style>
     .tmp-list {
@@ -27,25 +30,26 @@
         min-height: 760px;
     }
 
-    .element-edit {
-        border-right: 1px solid #ccc;
-        min-height: 760px;
-    }
-
-    .component {
+    .element {
         padding: 1px;
         border: 1px solid #ccc;
         margin: 2px;
     }
+
+    .iphone6 {
+        width: 375px;
+        height: 667px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+    }
     </style>
 </head>
 <!-- 
-自下而上的设计
-组件设计
-组件编辑
-
-模板设计
-模板编辑
+1. 拖拽事件
+2. 组件复制
+3. 组件内容编辑
+4. 内容滚动
+5. 成功添加组件
  -->
 
 <body ng-app="DynamicPageEdit" ng-controller="MainController">
@@ -62,63 +66,104 @@
                     <div class="col-md-12">
                         <ui>
                             <li><a href="#">首页1</a></li>
-                            <li><a href="#">首页2</a></li>
                             <li><a href="#">专题页1</a></li>
+                            <li><a href="#">专题页2</a></li>
                         </ui>
-                    </div>
-                </div>
-                <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
-                    <div class="col-md-12 container" dragula='bag1'>
-                        <div class="component">
-                            <div>111<img width="100%" src="http://placehold.it/200x50" alt="1"></div>
-                        </div>
-                        <div class="component">
-                            <div>222<img width="100%" src="http://placehold.it/200x50" alt="2"></div>
-                        </div>
-                        <div class="component">
-                            <div>333<img width="100%" src="http://placehold.it/200x50" alt="3"></div>
-                        </div>
-                        <div class="component">
-                            <div>444<img width="100%" src="http://placehold.it/200x50" alt="4"></div>
-                        </div>
-                        <div class="component">
-                            <div>555<img width="100%" src="http://placehold.it/200x50" alt="5"></div>
-                        </div>
-                        <div class="component">
-                            <div>666<img width="100%" src="http://placehold.it/200x50" alt="6"></div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- 页面布局控制区域 -->
-            <div class="col-md-4 tmp-layout">
-                <div class="row" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
-                    <div class="col-md-12 container" dragula='bag2'>
-                        <div class="component">
-                            <div>111<img width="100%" src="http://placehold.it/300x50" alt="1"></div>
-                        </div>
-                        <div class="component">
-                            <div>222<img width="100%" src="http://placehold.it/300x50" alt="2"></div>
-                        </div>
-                        <div class="component">
-                            <div>333<img width="100%" src="http://placehold.it/300x50" alt="3"></div>
+            <div class="col-md-3 tmp-layout">
+                <div class="row">
+                    <div class="col">
+                        <button ng-click="uploadChanges()" class="button button-block button-calm"><i class="ion-android-cloud-done"></i> 发布</button>
+                    </div>
+                    <div class="col">
+                        <button ng-click="revertChanges()" class="button button-block button-calm"><i class="ion-android-download"></i> 恢复</button>
+                    </div>
+                </div>
+                <div class="row container" dragula='"first-bag"'>
+                    <div class="col" title="点击按钮添加组件" ng-click="addUIElement('slider')">
+                        <button class="button button-block button-calm"><i class="ion-android-add"></i> 轮播器</button>
+                    </div>
+                    <div class="col" title="点击按钮添加组件" ng-click="addUIElement('title')">
+                        <button class="button button-block button-calm"><i class="ion-android-add"></i> 标题</button>
+                    </div>
+                    <div class="col" title="点击按钮添加组件" ng-click="addUIElement('grid')">
+                        <button class="button button-block button-calm"><i class="ion-android-add"></i> 列表</button>
+                    </div>
+                    <div class="col" title="点击按钮添加组件" ng-click="addUIElement('bgimg')">
+                        <button class="button button-block button-calm"><i class="ion-android-add"></i> 大图</button>
+                    </div>
+                </div>
+                <div class="row preview" style="border-top: 2px solid #ccc;margin-top: 10px;padding-top: 10px;">
+                    <div class="col-md-12 container iphone6" dragula='"second-bag"'>
+                        <div ng-repeat="ui in UIList">
+                            <!-- 轮播器 -->
+                            <div eindex="{{$index}}" class="component" style="height: {{ui.height}}px" ng-if="ui.type=='slider'" ng-click="editUIDetail($index)">
+                                <ion-slides options="options" slider="data.slider">
+                                    <ion-slide-page ng-repeat="item in ui.items">
+                                        <img width="100%" ng-src="{{item.img_url}}">
+                                    </ion-slide-page>
+                                </ion-slides>
+                            </div>
+                            <!-- 图片Grid -->
+                            <div eindex="{{$index}}" class="row component" style="max-height: {{ui.height}}px;ext-align: center;margin: 0 auto;padding: 5px 0px;" ng-if="ui.type=='grid'" ng-click="editUIDetail($index)">
+                                <div class="col" ng-repeat="item in ui.items">
+                                    <img width="100%" ng-src="{{item.img_url}}">
+                                    <p>课程内容课程内容课程内容</p>
+                                </div>
+                            </div>
+                            <!-- 标题 -->
+                            <div eindex="{{$index}}" style="max-height: {{ui.height}}px" class="component" ng-if="ui.type=='title' || ui.type=='bgimg'" ng-click="editUIDetail($index)">
+                                <img width="100%" ng-src="{{ui.items[0].img_url}}">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- 组件内容调整区域 -->
-            <div class="col-md-6 element-edit container" dragula='bag3'>
-                <div class="component">
-                    111<img width="100%" src="http://placehold.it/400X50" alt="1">
+            <div class="col-md-6 container" dragula='"third-bag"' ng-show="editElement">
+                <div class="row">
+                    <div class="col-md-10">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">高度:</span>
+                            <input type="text" placeholder="120" ng-model="editElement.height">
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="button button-assertive" ng-click="delElement()"><i class="ion-android-close"></i> 删除组件</button>
+                    </div>
                 </div>
-                <div class="component">
-                    222<img width="100%" src="http://placehold.it/400X50" alt="1">
+                <br>
+                <div ng-repeat="item in editElement.items">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img style="width: 100%;" ng-src="{{item.img_url}}" alt="{{item.clicked_url}}" ng-click="editImgInfo(item)" />
+                        </div>
+                        <div class="col-md-8" class="list">
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">图片URL:</span>
+                                <input type="text" placeholder="http://" ng-model="item.img_url">
+                            </label>
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">跳转URL:</span>
+                                <input type="text" placeholder="#" ng-model="item.clicked_url">
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <button ng-if="$index>0" class="button button-energized" ng-click="delImg($index)"><i class="ion-android-close"></i> 删除图片</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-show="editElement.type=='slider' || editElement.type=='grid'">
+                    <div class="col-md-2">
+                        <button class="button button-calm" ng-click="addImg()"><i class="ion-android-add"></i> 添加图片</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script>
-</script>
 
 </html>
