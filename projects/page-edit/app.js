@@ -24,60 +24,71 @@ angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDr
             $scope.UIList = [{
                 type: 'slider',
                 height: 120,
-                dis_order: 1,
+                order: 1,
                 items: [{
                     img_url: 'http://placehold.it/1500X500',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 1
                 }, {
                     img_url: 'http://placehold.it/1500X500',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 2
                 }, {
                     img_url: 'http://placehold.it/1500X500',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 3
                 }]
             }, {
                 type: 'title',
                 height: 60,
-                dis_order: 2,
+                order: 2,
                 items: [{
                     img_url: 'http://placehold.it/2510x480',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 4
                 }]
             }, {
                 type: 'grid',
                 height: 200,
-                dis_order: 4,
+                order: 4,
                 items: [{
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 5
                 }, {
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 6
                 }]
             }, {
                 type: 'title',
                 height: 300,
-                dis_order: 5,
+                order: 5,
                 items: [{
                     img_url: 'http://placehold.it/1510x480',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 7
                 }]
             }, {
                 type: 'grid',
                 height: 200,
-                dis_order: 4,
+                order: 4,
                 items: [{
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 8
                 }, {
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 9
                 }, {
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 10
                 }, {
                     img_url: 'http://placehold.it/510x360',
-                    clicked_url: '#'
+                    clicked_url: '#',
+                    order: 11
                 }]
             }];
 
@@ -85,15 +96,24 @@ angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDr
             //     removeOnSpill: true
             // });
 
-            // $scope.$on('first-bag.drag', function(e, el) {
+            // $scope.$on('third-bag.drag', function(e, el) {
             //     // el.removeClass('ex-moved');
             //     console.log('xxxx', 1111);
             // });
 
-            // $scope.$on('first-bag.drop', function(e, el) {
-            //     // el.addClass('ex-moved');
-            //     console.log('xxxx', 2222);
-            // });
+            $scope.$on('second-bag.drop', function(e, el) {
+                // re-order component
+                $('.preview .component').each(function() {
+                    $scope.UIList[$(this).attr('eindex')].order = $('.preview .component').index($(this));
+                });
+            });
+
+            $scope.$on('third-bag.drop', function(e, el) {
+                // re-order image
+                $('.imginfo img').each(function() {
+                    $scope.editElement.items[$(this).attr('eindex')].order = $('.imginfo img').index($(this));
+                });
+            });
 
             // $scope.$on('first-bag.over', function(e, el, container) {
             //     // container.addClass('ex-over');
@@ -131,7 +151,7 @@ angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDr
                 var uiobj = {
                     type: uitype,
                     height: 120,
-                    dis_order: $scope.UIList.length + 1,
+                    order: $scope.UIList.length + 1,
                     items: items
                 }
                 $scope.UIList.push(uiobj);
@@ -164,16 +184,9 @@ angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDr
             }
 
             $scope.uploadChanges = function() {
-                //排序后post json data
-                var order = 1;
-                $('.preview .component').each(function() {
-                    $scope.UIList[$(this).attr('eindex')].dis_order = order++;
-                    // console.log('xxxx',$('.preview .component').index($(this)));
-                });
-
                 var postdata = JSON.stringify($scope.UIList);
                 //service post data
-
+                console.log('xxxx', postdata);
 
             }
 

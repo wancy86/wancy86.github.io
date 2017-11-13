@@ -123,7 +123,7 @@
                 </div>
             </div>
             <!-- 组件内容调整区域 -->
-            <div class="col-md-6 container" dragula='"third-bag"' ng-show="editElement">
+            <div class="col-md-6 container" ng-show="editElement">
                 <div class="row">
                     <div class="col-md-10">
                         <label class="item item-input item-stacked-label">
@@ -136,10 +136,10 @@
                     </div>
                 </div>
                 <br>
-                <div ng-repeat="item in editElement.items">
+                <div ng-repeat="item in editElement.items" dragula='"third-bag"' class="imginfo">
                     <div class="row">
                         <div class="col-md-2">
-                            <img style="width: 100%;" ng-src="{{item.img_url}}" alt="{{item.clicked_url}}" ng-click="editImgInfo(item)" />
+                            <img eindex="{{$index}}" style="width: 100%;" ng-src="{{item.img_url}}" alt="{{item.clicked_url}}" ng-click="editImgInfo(item)" />
                         </div>
                         <div class="col-md-8" class="list">
                             <label class="item item-input item-stacked-label">
