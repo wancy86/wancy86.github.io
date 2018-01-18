@@ -4,7 +4,7 @@
  * Description
  */
 // ngDraggable
-angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDragula(angular)])
+angular.module('DynamicPageEdit', ['ui.router', 'ngResource', angularDragula(angular)])
 
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
@@ -193,6 +193,18 @@ angular.module('DynamicPageEdit', ['ionic', 'ui.router', 'ngResource', angularDr
             $scope.revertChanges = function() {
 
                 // $scope.UIList={}
+            }
+
+            $scope.selectPhoto = function(idnex) {
+                $('#newImg_' + idnex).click();
+            }
+
+            $scope.uploadPhoto = function(obj) {
+                //TODO ajax upload file
+                // $('#newImg'+index).val();
+                console.log('xxxx', obj.value);
+                console.log('xxxx', $(obj).val());
+
             }
 
 

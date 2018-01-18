@@ -151,8 +151,10 @@
                                 <input type="text" placeholder="#" ng-model="item.clicked_url">
                             </label>
                         </div>
-                        <div class="col-md-2">
-                            <button ng-if="$index>0" class="button button-energized" ng-click="delImg($index)"><i class="ion-android-close"></i> 删除图片</button>
+                        <div class="col-md-2">  
+                            <input onChange="angular.element(this).scope().uploadPhoto(this)" type="file" style="display: none;width: 0px;height: 0px;" name="newImg_{{$index}}" id="newImg_{{$index}}"/>
+                            <button class="button button-energized" style="margin-bottom: 2px;" ng-click="selectPhoto($index)"><i class="ion-android-upload"></i> <span>上传图片</span></button>
+                            <button ng-if="$index>0" class="button button-energized" ng-click="delImg($index)"><i class="ion-android-close"></i> <span>删除图片</span></button>
                         </div>
                     </div>
                 </div>
