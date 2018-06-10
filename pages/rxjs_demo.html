@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/6.2.0/rxjs.umd.js"></script>
+</head>
+<script>
+var a = new rxjs.of(1, 2, 3, 5, 6, 7, 8, 9)
+
+a.subscribe(
+    (num) => console.log('xxx: ', num)
+);
+</script>
+
+<body>
+    <h3>hello rxjs</h3>
+</body>
+
+</html>

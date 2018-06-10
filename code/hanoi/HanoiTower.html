@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tower of Hanoi 1.0.0</title>
+    <!-- <script src="jqueryui/js/jquery-1.10.2.js"></script> -->
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.js"></script>
+    <style>
+    table {
+        border: 1px solid #eee;
+        float: left;
+    }
+    
+    td {
+        width: 30px;
+        height: 20px;
+    }
+    
+    caption {
+        text-align: center;
+    }
+    </style>
+    <script>
+    $(function() {
+        var tr = $('<tr></tr>');
+        for (var i = 0; i < 17; i++) {
+            tr.append($('<td></td>').clone());
+        }
+        $('table').each(function() {
+            for (var i = 0; i < 9; i++) {
+                $(this).append(tr.clone());
+            }
+        });
+
+        InitCanve();
+
+    });
+
+    //inti canva
+    function InitCanve() {
+        polA = [];
+        polB = [];
+        polC = [];
+        polA.name = "poleA";
+        polB.name = "poleB";
+        polC.name = "poleC";
+        polA.pol = "A";
+        polB.pol = "B";
+        polC.pol = "C";
+        var level = $('#level').val();
+        $("td").css("background", "#FFF");  
+        
+        for (var i = 1; i <= level; i++) {
+            polA.push(i * 2 - 1);
+        }
+        Draw(polA);
+        Draw(polB);
+        Draw(polC);
+    }
+
+    var polA = [];
+    var polB = [];
+    var polC = [];
+    polA.name = "poleA";
+    polB.name = "poleB";
+    polC.name = "poleC";
+    polA.pol = "A";
+    polB.pol = "B";
+    polC.pol = "C";
+
+    function Draw(pol, delay) {        
+
+        var tb = $('#' + pol.name);
+        var level = pol.length;
+        tb.find("td").css("background", "#FFF");
+
+        console.log(tb);
+
+        var trs = tb.find("tr:gt(" + (9 - level - 1) + ")");
+
+        console.log(trs);
+        
+        for (var i = 0; i < trs.length; i++) {
+            var min = 8 - (pol[i] + 1) / 2;
+            var max = 8 + (pol[i] + 1) / 2 - 1;
+            // console.log(max);
+            // console.log(min);
+            $(trs[i]).find("td:gt(" + min + ")").css("background", "#000");
+            $(trs[i]).find("td:gt(" + max + ")").css("background", "#FFF");
+        }
+
+        if (delay) Delay(delay);
+    }
+
+    function MoveHanoi(level, pol_A, pol_B, pol_C) {
+        console.log(level);
+        if (level == 1) {
+            console.log(pol_A.pol + '-->' + pol_C.pol);
+            var m = pol_A.shift();
+            console.log(pol_A);
+            pol_C.reverse();
+            pol_C.push(m);
+            pol_C.reverse();
+            console.log(pol_C);
+            Draw(pol_A,500);
+            Draw(pol_C,500);
+        } else {
+            MoveHanoi(level - 1, pol_A, pol_C, pol_B);
+            MoveHanoi(1, pol_A, pol_B, pol_C);
+            MoveHanoi(level - 1, pol_B, pol_A, pol_C);
+
+        }
+    }
+
+    function Play() {
+        InitCanve();
+        console.log(polA);
+        console.log(polB);
+        console.log(polC);
+        var level = $('#level').val();
+        MoveHanoi(level, polA, polB, polC);
+    }
+
+    function Delay(minseconds) {
+        var t = +new Date();
+        while (+new Date() - t < minseconds) {}
+    }
+    </script>
+</head>
+
+<body style="width:2000px;">
+    Level:
+    <select name="level" id="level" onchange="InitCanve()">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <button onclick="Play()" class="btn-primary">Play</button>
+    <hr>
+    <div style="width:2000px;">
+        <table id="poleA">
+            <caption>
+                <h3>Pole A</h3></caption>
+        </table>
+        <table id="poleB">
+            <caption>
+                <h3>Pole B</h3></caption>
+        </table>
+        <table id="poleC">
+            <caption>
+                <h3>Pole C</h3></caption>
+        </table>
+    </div>
+</body>
+
+</html>
