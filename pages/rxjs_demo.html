@@ -6,11 +6,17 @@
     <script src="https://cdn.bootcss.com/rxjs/6.2.0/rxjs.umd.js"></script>
 </head>
 <script>
-var a = new rxjs.of(1, 2, 3, 5, 6, 7, 8, 9)
+// var a = new rxjs.of(1, 2, 3, 5, 6, 7, 8, 9, rxjs.asapScheduler)
+// var a = new rxjs.of(1, 2, 3, 5, 6, 7, 8, 9, rxjs.asyncScheduler)
+var a = new rxjs.of(1, 2, 3, 5, 6, 7, 8, 9, rxjs.queueScheduler)
+var a = new rxjs.interval(1000)
 
-a.subscribe(
-    (num) => console.log('xxx: ', num)
-);
+// var subscription = Rx.Observable.interval(500).take(4).subscribe(function (x) { console.log(x) });
+
+a.pipe(rxjs.operators.take(3))
+    .subscribe(
+        (num) => console.log('xxx: ', num)
+    );
 </script>
 
 <body>
