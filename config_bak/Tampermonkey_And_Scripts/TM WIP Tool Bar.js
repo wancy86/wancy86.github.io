@@ -8,101 +8,142 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
   'use strict';
 
-  setTimeout(function() {
+  setTimeout(function () {
     $('#UserName').val('mwan');
     $('#password').val('123123123');
     $('#Login').click();
-  }, 500);
+  }, 1000);
 
-  var html = '';
-  html += '<div style="top: 0px;left: 0px;height:60px;margin-top:30px;">';
-  html += '    <input type="text" id="TaskId">';
-  html += '    <button type="button" id="editTask">GO</button>';
-  
-  html += '    <select style="width: 200px;" id="ChinaTeamAssign" title="Please select developer." tabindex="0" size="1" name="ChinaTeamAssign" class="">';
-  html += '        <option value="-1">Select Developer...</option>';
-  html += '        <option style="background-color: #F3F781" value="396" title="Please select developer.">Eric Chen</option>';
-  html += '        <option style="background-color: #F3F781" value="469" title="Please select developer.">Nangen Ding</option>';
-  html += '        <option style="background-color: #F3F781" value="473" title="Please select developer.">Lucas Hu</option>';
-  html += '        <option style="background-color: #F3F781" value="500" title="Please select developer.">Xiaocong Xu</option>';
-  html += '        <option style="background-color: #F3F781" value="534" title="Please select developer.">Wendy Li</option>';
-  html += '        <option style="background-color: #F3F781" value="129" title="Please select developer.">Mark Wan</option>';
-  html += '        <option style="background-color: #F3F781" value="441" title="Please select developer.">Rich Li</option>';
-  html += '        <option style="background-color: #F3F781" value="462" title="Please select developer.">Frank Huang</option>';
-  html += '        <option style="background-color: #F3F781" value="387" title="Please select developer.">Abel Zhuzuoxin</option>';
-  html += '        <option style="background-color: #F3F781" value="533" title="Please select developer.">Alan Liu</option>';
-  html += '        <option style="background-color: #F3F781" value="512" title="Please select developer.">Chenghang Luo</option>';
-  html += '        <option style="background-color: #F3F781" value="166" title="Please select developer.">Lion Chen</option>';
-  html += '        <option style="background-color: #F3F781" value="232" title="Please select developer.">Miles Yao</option>';
-  html += '        <option style="background-color: #F3F781" value="332" title="Please select developer.">Purk Wu</option>';
-  html += '        <option style="background-color: #F3F781" value="110" title="Please select developer.">Ying Wang</option>';
-  html += '        <option style="background-color: #F3F781" value="37" title="Please select developer. (Team Leader)">Simon Qu ♥</option>';
-  html += '    </select>';
-  html += '</div>';
+  var html =
+    `  
+  <div style="top: 0px;left: 0px;height:60px;margin-top:30px;">
+      <input type="text" id="TaskId" placeholder="WIP Number">
+      <button type="button" id="editTask">GO</button>
+      <select style="width: 200px;" id="ChinaTeamAssign" title="Please select developer." tabindex="0" size="1" name="ChinaTeamAssign" class="">
+          <option value="-1">Select Developer...</option>
+          <option style="background-color: #F3F781" value="396" title="Please select developer.">Eric Chen</option>
+          <option style="background-color: #F3F781" value="469" title="Please select developer.">Nangen Ding</option>
+          <option style="background-color: #F3F781" value="473" title="Please select developer.">Lucas Hu</option>
+          <option style="background-color: #F3F781" value="500" title="Please select developer.">Xiaocong Xu</option>
+          <option style="background-color: #F3F781" value="534" title="Please select developer.">Wendy Li</option>
+          <option style="background-color: #F3F781" value="129" title="Please select developer.">Mark Wan</option>
+          <option style="background-color: #F3F781" value="441" title="Please select developer.">Rich Li</option>
+          <option style="background-color: #F3F781" value="462" title="Please select developer.">Frank Huang</option>
+          <option style="background-color: #F3F781" value="387" title="Please select developer.">Abel Zhuzuoxin</option>
+          <option style="background-color: #F3F781" value="533" title="Please select developer.">Alan Liu</option>
+          <option style="background-color: #F3F781" value="512" title="Please select developer.">Chenghang Luo</option>
+          <option style="background-color: #F3F781" value="166" title="Please select developer.">Lion Chen</option>
+          <option style="background-color: #F3F781" value="232" title="Please select developer.">Miles Yao</option>
+          <option style="background-color: #F3F781" value="332" title="Please select developer.">Purk Wu</option>
+          <option style="background-color: #F3F781" value="110" title="Please select developer.">Ying Wang</option>
+          <option style="background-color: #F3F781" value="37" title="Please select developer. (Team Leader)">Simon Qu ♥</option>
+      </select>
+  </div>
+  `;
 
-  setTimeout(function() {
+  setTimeout(function () {
     $('#top').html('').append(html);
     $('#contactinfo').html('');
-  }, 4000);
+  }, 5000);
 
-  $('#editTask').die().live('click', function() {
+  $('#editTask').die().live('click', function () {
     var TaskId = $('#TaskId').val().trim();
     if (TaskId !== '') {
       console.log(TaskId);
-      Communication.CustomRequest('WIP_MainMenu.max?preprocess=true', function() {
+      Communication.CustomRequest('WIP_MainMenu.max?preprocess=true', function () {
         Communication.LinkRequest('WIP_ItemEdit.max?TaskId=' + TaskId + '&t=' + ((new Date()).getTime()));
       });
     }
   });
 
-  $('#ChinaTeamAssign').die('change').live('change', function() {
+  $('#ChinaTeamAssign').die('change').live('change', function () {
     if ($('#AssignCR').length && $('#AssignedToDev').length) {
-        $('#AssignCR').val(129);
-        $('#AssignedToDev').val($('#ChinaTeamAssign').val());
-        $('#ChinaTeamAssign').val('');
-        $('#Save').click();
+      $('#AssignCR').val(129);
+      $('#AssignedToDev').val($('#ChinaTeamAssign').val());
+      $('#ChinaTeamAssign').val('');
+      $('#WorkflowStepId').val(19);
+      $('#StatusTypeId').val(3);
+      if ($('#StartDate').val() == '')
+        $('#StartDate').val((new Date()).toLocaleDateString());
+      $('#Save').click();
     }
   });
 
-  $('#TaskId').die().live('keypress', function(event) {
+  $('#TaskId').die().live('keypress', function (event) {
     if (event.which == '13') {
       $('#editTask').click();
     }
   });
 
-  // Your code here...
-  window.getItemInfo = function(wip, lastone) {
-    Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function(resp) {
-      var info = $.parseJSON(resp);
-      //console.log(info);
-      var data = {
-        StatusType: info.StatusType,
-        WIP: wip,
-        UserName: info.UserName,
-        TaskName: info.TaskName
-      };
-      window.arr.push(data);
-      if (lastone) {
-        window.arr.sort(function(a, b) {
-          var aa = a.StatusType;
-          var bb = b.StatusType;
-          return aa > bb ? 1 : (aa == bb ? 0 : -1);
+  window.getItemsInfo = function (wips) {
+    var arr = [];
+    var ps = [];
+    wips.forEach(function (wip, index) {
+      var wip = wip;
+      console.log('xxx: ', index);
+
+      var p = new Promise(function (resolve, reject) {
+        Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function (resp) {
+          var info = $.parseJSON(resp);
+          var data = {
+            WIP: wip,
+            StatusType: info.StatusType,
+            UserName: info.UserName,
+            TaskName: info.TaskName
+          };
+          arr.push(data);
+          resolve();
         });
-        console.log(window.arr);
-      }
+      })
+      ps.push(p);
+    });
+
+    Promise.all(ps).then(function () {
+      console.log(arr);
     });
   };
 
-  window.getItemsInfo = function(wips) {
-        Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max?preprocess=true');
-        window.arr = [];
-        for (var i = wips.length - 1; i >= 0; i--) {
-          var wip = wips[i];
-          var lastone = (i === 0) ? 1 : 0;
-          getItemInfo(wip, lastone);
-        }
+  window.checkUAT = function () {
+    // check all file checkbox
+    $(':checkbox[title="Please check here if this file has been uploaded to the test environment."]').each(function () {
+      $(this).attr('checked', 1);
+      CustomScript.setUpTest(this);
+    });
+    $(':checkbox[title="Please check here if this file has been uploaded to the UAT environment."]').each(function () {
+      $(this).attr('checked', 1);
+      CustomScript.setUpUAT(this);
+    });
   };
+
+  window.listFile = function () {
+    var fl = '';
+    $('#tbw_div_UplList1 tbody tr').each(function () {
+      var file = $(this).find('td :input').eq(0).val();
+      var version = $(this).find('td :input').eq(1).val();
+      fl += file + ' ' + version + '\n';
+    });
+    console.log(fl);
+  };
+
+  window.logrep = () => {
+    $('#sREP_ID').val(81);
+    $('#sREP_ID').change();
+
+    setTimeout(() => {
+      var start = new Date();
+      start.setDate(1);
+      var end = new Date();
+      end.addMonths(1);
+      end.setDate(0);
+      $('#sRPT_ID').val(3);
+      $('#sAHR_EmailAddress').val('mwan@maxprocessing.com');
+      $('#Par_48').val(129)
+      $('#Par_49').val(start.toLocaleDateString());
+      $('#Par_50').val(end.toLocaleDateString());
+      $('#Save').click();
+    }, 1000);
+  }
 })();
