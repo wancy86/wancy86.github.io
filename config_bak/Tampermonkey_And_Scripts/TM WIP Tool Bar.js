@@ -79,6 +79,8 @@
   });
 
   window.getItemsInfo = function (wips) {
+    Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max');
+    
     var arr = [];
     var ps = [];
     wips.forEach(function (wip, index) {
