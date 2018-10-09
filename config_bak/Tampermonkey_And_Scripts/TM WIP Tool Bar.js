@@ -8,17 +8,17 @@
 // @grant        none
 // ==/UserScript==
 
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  setTimeout(function () {
-    $('#UserName').val('mwan');
-    $('#password').val('123123123');
-    $('#Login').click();
-  }, 1000);
+    setTimeout(function() {
+        $('#UserName').val('mwan');
+        $('#password').val('123123123');
+        $('#Login').click();
+    }, 1000);
 
-  var html =
-    `  
+    var html =
+        `
   <div style="top: 0px;left: 0px;height:60px;margin-top:30px;">
       <input type="text" id="TaskId" placeholder="WIP Number">
       <button type="button" id="editTask">GO</button>
@@ -44,108 +44,122 @@
   </div>
   `;
 
-  setTimeout(function () {
-    $('#top').html('').append(html);
-    $('#contactinfo').html('');
-  }, 5000);
+    setTimeout(function() {
+        $('#top').html('').append(html);
+        $('#contactinfo').html('');
+    }, 5000);
 
-  $('#editTask').die().live('click', function () {
-    var TaskId = $('#TaskId').val().trim();
-    if (TaskId !== '') {
-      console.log(TaskId);
-      Communication.CustomRequest('WIP_MainMenu.max?preprocess=true', function () {
-        Communication.LinkRequest('WIP_ItemEdit.max?TaskId=' + TaskId + '&t=' + ((new Date()).getTime()));
-      });
-    }
-  });
+    $('#editTask').die().live('click', function() {
+        var TaskId = $('#TaskId').val().trim();
+        if (TaskId !== '') {
+            console.log(TaskId);
+            Communication.CustomRequest('WIP_MainMenu.max?preprocess=true', function() {
+                Communication.LinkRequest('WIP_ItemEdit.max?TaskId=' + TaskId + '&t=' + ((new Date()).getTime()));
+            });
+        }
+    });
 
-  $('#ChinaTeamAssign').die('change').live('change', function () {
-    if ($('#AssignCR').length && $('#AssignedToDev').length) {
-      $('#AssignCR').val(129);
-      $('#AssignedToDev').val($('#ChinaTeamAssign').val());
-      $('#ChinaTeamAssign').val('');
-      $('#WorkflowStepId').val(19);
-      $('#StatusTypeId').val(3);
-      if ($('#StartDate').val() == '')
-        $('#StartDate').val((new Date()).toLocaleDateString());
-      $('#Save').click();
-    }
-  });
+    $('#ChinaTeamAssign').die('change').live('change', function() {
+        if ($('#AssignCR').length && $('#AssignedToDev').length) {
+            $('#AssignCR').val(129);
+            $('#AssignedToDev').val($('#ChinaTeamAssign').val());
+            $('#ChinaTeamAssign').val('');
+            $('#WorkflowStepId').val(19);
+            $('#StatusTypeId').val(3);
+            if ($('#StartDate').val() == '')
+                $('#StartDate').val((new Date()).toLocaleDateString());
+            $('#Save').click();
+        }
+    });
 
-  $('#TaskId').die().live('keypress', function (event) {
-    if (event.which == '13') {
-      $('#editTask').click();
-    }
-  });
+    $('#TaskId').die().live('keypress', function(event) {
+        if (event.which == '13') {
+            $('#editTask').click();
+        }
+    });
 
-  window.getItemsInfo = function (wips) {
-    Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max');
-    
-    var arr = [];
-    var ps = [];
-    wips.forEach(function (wip, index) {
-      var wip = wip;
-      console.log('xxx: ', index);
+    window.getItemsInfo = function(wips) {
+        Communication.LinkRequest('https://wip.maxprocessing.com/WIP_OverView.max');
 
-      var p = new Promise(function (resolve, reject) {
-        Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function (resp) {
-          var info = $.parseJSON(resp);
-          var data = {
-            WIP: wip,
-            StatusType: info.StatusType,
-            UserName: info.UserName,
-            TaskName: info.TaskName
-          };
-          arr.push(data);
-          resolve();
+        var arr = [];
+        var ps = [];
+        wips.forEach(function(wip, index) {
+            var wip = wip;
+            // console.log('xxx: ', index);
+
+            var p = new Promise(function(resolve, reject) {
+                Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function(resp) {
+                    var info = $.parseJSON(resp);
+                    var data = {
+                        WIP: wip,
+                        StatusType: info.StatusType,
+                        UserName: info.UserName,
+                        TaskName: info.TaskName
+                    };
+                    arr.push(data);
+                    resolve();
+                });
+            })
+            ps.push(p);
         });
-      })
-      ps.push(p);
-    });
 
-    Promise.all(ps).then(function () {
-      console.log(arr);
-    });
-  };
+        Promise.all(ps).then(function() {
+            arr.sort(function(a, b) { return a.StatusType == b.StatusType ? 0 : (a.StatusType > b.StatusType ? 1 : -1) });
+            console.log(arr);
+        });
+    };
 
-  window.checkUAT = function () {
-    // check all file checkbox
-    $(':checkbox[title="Please check here if this file has been uploaded to the test environment."]').each(function () {
-      $(this).attr('checked', 1);
-      CustomScript.setUpTest(this);
-    });
-    $(':checkbox[title="Please check here if this file has been uploaded to the UAT environment."]').each(function () {
-      $(this).attr('checked', 1);
-      CustomScript.setUpUAT(this);
-    });
-  };
+    window.checkUAT = function() {
+        // check all file checkbox
+        $(':checkbox[title="Please check here if this file has been uploaded to the test environment."]').each(function() {
+            $(this).attr('checked', 1);
+            CustomScript.setUpTest(this);
+        });
+        $(':checkbox[title="Please check here if this file has been uploaded to the UAT environment."]').each(function() {
+            $(this).attr('checked', 1);
+            CustomScript.setUpUAT(this);
+        });
+    };
 
-  window.listFile = function () {
-    var fl = '';
-    $('#tbw_div_UplList1 tbody tr').each(function () {
-      var file = $(this).find('td :input').eq(0).val();
-      var version = $(this).find('td :input').eq(1).val();
-      fl += file + ' ' + version + '\n';
-    });
-    console.log(fl);
-  };
+    window.listFile = function() {
+        var fl = '';
+        $('#tbw_div_UplList1 tbody tr').each(function() {
+            var file = $(this).find('td :input').eq(0).val();
+            var version = $(this).find('td :input').eq(1).val();
+            fl += file + ' ' + version + '\n';
+        });
+        console.log(fl);
+    };
 
-  window.logrep = () => {
-    $('#sREP_ID').val(81);
-    $('#sREP_ID').change();
+    window.logrep = () => {
+        $('#sREP_ID').val(81);
+        $('#sREP_ID').change();
 
-    setTimeout(() => {
-      var start = new Date();
-      start.setDate(1);
-      var end = new Date();
-      end.addMonths(1);
-      end.setDate(0);
-      $('#sRPT_ID').val(3);
-      $('#sAHR_EmailAddress').val('mwan@maxprocessing.com');
-      $('#Par_48').val(129)
-      $('#Par_49').val(start.toLocaleDateString());
-      $('#Par_50').val(end.toLocaleDateString());
-      $('#Save').click();
-    }, 1000);
-  }
+        setTimeout(() => {
+            var start = new Date();
+            start.setDate(1);
+            var end = new Date();
+            end.addMonths(1);
+            end.setDate(0);
+            $('#sRPT_ID').val(3);
+            $('#sAHR_EmailAddress').val('mwan@maxprocessing.com');
+            $('#Par_48').val(129)
+            $('#Par_49').val(start.toLocaleDateString());
+            $('#Par_50').val(end.toLocaleDateString());
+            $('#Save').click();
+        }, 1000);
+    }
+
+    setTimeout(function() {
+        window.maxajax = function(options) {
+            // url, data, success
+            return new Promise(function(resolve, reject) {
+                var replaceID = function(resp) {
+                    options.success(resp);
+                    resolve();
+                }
+                Communication.CustomRequest(options.url, replaceID, null, $.param(options.data));
+            })
+        }
+    }, 10000);
 })();

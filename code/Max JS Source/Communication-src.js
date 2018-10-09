@@ -811,6 +811,7 @@ define('Communication', ['ValidatorContainer', 'jQuery', 'Utilities', 'PageHelpe
                     },
                     // url as follows vrmname.max?param1=value1&param2=value2.....
                     // replaceID is either an element id to accept new innerHTML, or is a javascript function that will be passed the html
+                    // CustomRequest('applist.max?preprocess=true', callback, null, 'name=test&age=18')
                     CustomRequest: function(url, replaceID, srcElement, data) {
                         try {
                             iLog("CustomRequest", "Called");
