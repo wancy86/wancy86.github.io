@@ -60,16 +60,26 @@
     });
 
     $('#ChinaTeamAssign').die('change').live('change', function() {
-        if ($('#AssignCR').length && $('#AssignedToDev').length) {
+        //WIP_OVERVIEW
+        if ($('#middle').attr('vrmname') == "WIP_OVERVIEW") {
+            $('#UserID').val($('#ChinaTeamAssign').val());
+            $('#UserID').change();
+            return;
+        }
+
+        // WIP_ITEMEDIT
+        if ($('#middle').attr('vrmname') == "WIP_ITEMEDIT") {
             $('#AssignCR').val(129);
             $('#AssignedToDev').val($('#ChinaTeamAssign').val());
             $('#ChinaTeamAssign').val('');
             $('#WorkflowStepId').val(19);
             $('#StatusTypeId').val(3);
-            if ($('#StartDate').val() == '')
+            if ($('#StartDate').val() == '') {
                 $('#StartDate').val((new Date()).toLocaleDateString());
+            }
             $('#Save').click();
         }
+
     });
 
     $('#TaskId').die().live('keypress', function(event) {
@@ -84,9 +94,6 @@
         var arr = [];
         var ps = [];
         wips.forEach(function(wip, index) {
-            var wip = wip;
-            // console.log('xxx: ', index);
-
             var p = new Promise(function(resolve, reject) {
                 Communication.CustomRequest('https://wip.maxprocessing.com/WIP_WorkLogEntry.max?AJAX_ACTION=GetTaskInfo&TaskId=' + wip, function(resp) {
                     var info = $.parseJSON(resp);
@@ -105,16 +112,30 @@
 
         Promise.all(ps).then(function() {
             arr.sort(function(a, b) { return a.StatusType == b.StatusType ? 0 : (a.StatusType > b.StatusType ? 1 : -1) });
-            console.log(arr);
+            //QA Upload
+            var qastr = '\n',
+                statusstr = '\n',
+                usestr = '\n';
+            arr.forEach(function(item, index) {
+                qastr += `WIP# ${item.WIP}: ${item.TaskName}\n`;
+                statusstr += `${item.WIP} - ${item.StatusType} - ${item.TaskName}\n`;
+                usestr += `${item.WIP} - ${item.StatusType} - ${item.UserName} - ${item.TaskName}\n`;
+            });
+            console.log('\n\nQA Upload: ', qastr);
+            console.log('\n\nItem Status: ', statusstr);
+            console.log('\n\nUser Item List: ', usestr);
         });
     };
 
-    window.checkUAT = function() {
+
+    window.checkTest = function() {
         // check all file checkbox
         $(':checkbox[title="Please check here if this file has been uploaded to the test environment."]').each(function() {
             $(this).attr('checked', 1);
             CustomScript.setUpTest(this);
         });
+    }
+    window.checkUAT = function() {
         $(':checkbox[title="Please check here if this file has been uploaded to the UAT environment."]').each(function() {
             $(this).attr('checked', 1);
             CustomScript.setUpUAT(this);

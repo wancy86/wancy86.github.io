@@ -635,6 +635,7 @@ define('Communication', ['ValidatorContainer', 'jQuery', 'Utilities', 'PageHelpe
                     // serializes the data from an html block and posts it to the target. html can be a jquery / dom object 
                     //   or a string of the element id and pass in params with ?name=value syntax.
                     // LK: AddToHistory is deprecated and so removed to improve speed. Unfortunately we need to keep the useless param!
+                    // Communication.SerialRequest($('#rightColumn'), false, obj);
                     SerialRequest: function(html, AddToHistory, srcElement, hideProgress) {
                         try {
                             iLog("SerialRequest", "Called");

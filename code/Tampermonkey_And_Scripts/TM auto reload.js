@@ -7,6 +7,8 @@
 // @include        /^https?:\/\/localhost:\d{4}/login.max/
 // @include        /^https?:\/\/www.maxprocessing.com:\d{4}/login.max/
 // @include        /^https?:\/\/139.146.162.176/login.max/
+// @include        /^https?:\/\/pcserver:5702/login.max/
+// @include        /^https?:\/\/agcs-qa.maxprocessing.com/
 // require      https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js
 // @grant        none
 // ==/UserScript==
@@ -23,9 +25,11 @@
     var html = `
               <div style="top: 0px;left: 0px;height:30px;margin-top:30px;">
                   <select name="rule" id="rule"></select>
-                  <input type="text" id="pageName">
+                  <input type="text" id="pageName"/>
                   <button type="button" id="linkToPage">Reload</button>
                   <button type="button" id="resetTime" style="width:40px;">0</button>
+                  <input type="text" id="MaxCode"/>
+                  <button type="button" id="MaxSearch">Search</button>
               </div>`;
 
     setTimeout(function() {
@@ -63,6 +67,7 @@
     });
 
     $('#linkToPage').die().live('click', function() {
+        $('#pageName').removeAttr('disabled');
         var pageName = $('#pageName').val().trim();
         if (pageName === '') {
             pageName = $('#middle').attr('vrmname');
@@ -88,6 +93,30 @@
         }
     });
 
+    $('#MaxSearch').die().live('click', function(event) {
+        var code = $('#MaxCode').val().split('-')[0];
+        var data = {
+            Code: code,
+            Status: '-1',
+            Agency: '-1',
+            sLOB_ID: '-1',
+            SubmitAct: 'Search'
+        }
+        Communication.LinkRequest(`POLICY_SEARCH.max?code=${code}`);
+        setTimeout(function() {
+            Communication.CustomRequest('POLICY_SEARCH.max?' + $.param(data), function(resp) {
+                Communication.LinkRequest(`Policy_Search_Result.max?code=${code}`);
+            })
+        }, 500);
+
+    });
+
+    $('#MaxCode').die().live('keypress', function(event) {
+        if (event.which == '13') {
+            $('#MaxSearch').click();
+        }
+    });
+
     // Your code here...
     window.eft = function() {
         $('#EC_AccountNumber').val('12345678901234');
@@ -103,7 +132,7 @@
         $('#Bill_City').val('Gulf Breeze');
         $('#Bill_State').val('FL');
         $('#Bill_Zip').val('32563-9645');
-        $(':radio[name=ec_AccType]').eq(0).attr('checked',1);
+        $(':radio[name=ec_AccType]').eq(0).attr('checked', 1);
     }
 
     setTimeout(function() {
