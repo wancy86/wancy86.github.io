@@ -30,6 +30,7 @@
                   <button type="button" id="resetTime" style="width:40px;">0</button>
                   <input type="text" id="MaxCode"/>
                   <button type="button" id="MaxSearch">Search</button>
+                  <input type="text" id="RECID" style="width:60px;" placeholder="RECID"/>
               </div>`;
 
     setTimeout(function() {
@@ -67,7 +68,7 @@
     });
 
     $('#linkToPage').die().live('click', function() {
-        $('#pageName').removeAttr('disabled');
+        $('#rule').removeAttr('disabled');
         var pageName = $('#pageName').val().trim();
         if (pageName === '') {
             pageName = $('#middle').attr('vrmname');
@@ -147,4 +148,31 @@
             })
         }
     }, 10000);
+
+    // get RECID when search
+    $(document).delegate("#resulttable a", "click", function() {
+        $(this).attr('onclick')
+        $('#RECID').val($(this).attr('onclick').toString().split('&')[1].replace('RECID=', ''))
+    });
+
+
+    // Spinner time count
+    window.ShowProgress = Global.ShowProgress;
+    Global.ShowProgress = function() {
+        window.ShowProgress()
+        $('#spinner-graphic').html('<p id="spinCt" style="font-size:24px">0</p>');
+        window.spinCt = setInterval(function() {
+            var t = parseInt($('#spinCt').html())
+            $('#spinCt').html(++t)
+
+        }, 1000);
+    }
+    window.HideProgress = Global.HideProgress;
+    Global.HideProgress = function() {
+        window.HideProgress()
+        console.log('Time counting: ', $('#spinCt').html());
+        $('#spinner-graphic').html('');
+        clearInterval(window.spinCt);
+    }
+
 })();
