@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+<div style="left:730px; top: 50px; position: absolute;" class="component EditorSubmitButton " ref="EditorSubmitButton">
+    <input style="height: 22px; width: 100px;" type="button" value="Save" id="xxxxx" name="xxxxx" title="Please click here to save." class="" tabindex="0" defaultbutton="false" causevalidation="false">
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxbtn</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

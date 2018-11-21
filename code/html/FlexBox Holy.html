@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="圣杯布局（Holy Grail Layout）指的是一种最常见的网站布局">
+    <title>Index</title>
+    <style>
+    .HolyGrail {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    header,
+    footer {
+        height: 75px;
+        border: 1px solid #ccc;
+        margin: 3px 0px;
+    }
+
+    .HolyGrail-body {
+        display: flex;
+        flex: 1;
+    }
+
+    .HolyGrail-content {
+        flex: 1;
+    }
+
+    .HolyGrail-nav,
+    .HolyGrail-ads {
+        /* 两个边栏的宽度设为12em */
+        flex: 0 0 12em;
+    }
+
+    .HolyGrail-nav {
+        /* 导航放到最左边 */
+        order: -1;
+    }
+
+    /*小屏幕自动上下堆叠布局*/
+    @media (max-width: 768px) {
+        .HolyGrail-body {
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .HolyGrail-nav,
+        .HolyGrail-ads,
+        .HolyGrail-content {
+            flex: auto;
+            /*flex: 1 1; auto的效果*/
+        }
+    }
+
+    div {
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+
+<body class="HolyGrail">
+    <header>this is header</header>
+    <div class="HolyGrail-body">
+        <div class="HolyGrail-content"">
+            <pre>
+    flex-direction属性
+    flex-direction属性决定主轴的方向（即项目的排列方向）。
+    .box {
+        flex-direction: row | row-reverse | column | column-reverse;
+    }
+    它可能有4个值。
+    row（默认值）：主轴为水平方向，起点在左端。
+    row-reverse：主轴为水平方向，起点在右端。
+    column：主轴为垂直方向，起点在上沿。
+    column-reverse：主轴为垂直方向，起点在下沿。
+            </pre>
+        </div>
+        <div class=" HolyGrail-nav">导航栏</div>
+        <div class="HolyGrail-ads">广告栏</div>
+    </div>
+    <footer>this is footer</footer>
+</body>
+
+</html>

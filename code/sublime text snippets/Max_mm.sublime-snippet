@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div ref="EditorMemo" style="width: 440px; height: 80px;" class="component EditorMemo">
+    <span class="EditorMemoSpan notRequired" style="width: 440px; height: 80px;">xxxxxxxxxxxx</span>
+    <textarea id="xxxxxxxxxxxx" name="xxxxxxxxxxxx" class="" style="width: 440px; height: 80px;" title="Please click here to enter xxxxxxxxxxxx.">xxxxxxxxxxxx</textarea>
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxmm</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

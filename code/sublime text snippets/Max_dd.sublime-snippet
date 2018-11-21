@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+<div style="" class="component EditorDropDown" ref="EditorDropDown">
+    <SPAN style="CURSOR: text" class="notRequired">xxxxx</SPAN>
+    <BR>
+    <SELECT style="" id="xxxxx" title="Please click here to select." tabindex="0" size=1 name="xxxxx">
+        <option value="-1">Please select...</option>
+    </SELECT>
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxdd</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

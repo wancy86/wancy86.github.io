@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[function autoFresh(fresh) {
+	// debugger;
+	var fresh = fresh || 0;
+	if (!fresh && window.freshInterval) {
+		console.log('clearInterval: ',111);
+		clearInterval(window.freshInterval)
+		delete window.freshInterval;
+	}
+	console.log('xxx: ',window.freshInterval);
+	if (fresh && !window.freshInterval) {
+		window.freshInterval = setInterval(function() {
+			Communication.LinkRequest(\$('#middle').attr('vrmname') + '.max')
+		}, 3000);
+	}
+}
+autoFresh(1);]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>fresh</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

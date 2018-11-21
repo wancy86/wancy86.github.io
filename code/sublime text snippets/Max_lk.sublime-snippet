@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+<div class="component EditorLink" ref="EditorLink" style="">
+    <a class="Default" style="cursor:pointer;" onclick="Communication.LinkRequest('xxx.max');" tabindex="0" title="Please click here to go to xxxxx.">xxxxx</a>
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxlk</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

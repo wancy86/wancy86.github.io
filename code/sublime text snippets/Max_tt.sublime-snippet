@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div style="left:0px;top:5px;" class="component EditorText" ref="EditorText">
+    <SPAN style="FONT-SIZE: 1em; CURSOR: text" class="notRequired">Date of Inspection</SPAN>
+    <INPUT style="width:250px" id="xxxxxxxxxxxxxx" title="Please click here to enter the inspection date." tabindex="0" name="xxxxxxxxxxxxxx" maxLength=50>
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxtt</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div style="display:none;" class="component EditorText" ref="EditorText">
+    <SPAN style="" class="notRequired"></SPAN>
+    <INPUT id="xxxxxxxxxxxxxx" name="xxxxxxxxxxxxxx" title="Please click here to enter xxxxxxxxxxxxxx." />
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxhd</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

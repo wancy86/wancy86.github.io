@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="图片瀑布流">
+    <title>Index</title>
+    <style>
+    .container {
+        border: 1px solid #CCC;
+        width: 780px;
+        margin-bottom: 5px;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    .container img {
+        margin: 3px;
+        flex-shrink: 0;
+        width: 100%;
+        align-self: flex-start;
+    }
+
+    [class^="col"] {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 0 0 calc(25% - 5px);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col1">
+            <img src="http://imglf5.nosdn0.126.net/img/dTNqaXhHemp0cHNIY3g0MGU0MzRUcDArWXl5RUlVNFM4a081WWk0TS82clpCamVxbkdXZlJBPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://imglf4.nosdn.127.net/img/cWRBNUNLZUQ4T2dkUVJ0MmJpc0l2SUs1SEZzbmpVMHJnUFVQVkphRlFCNFhUZG5WbEJEcnlBPT0.jpg?=imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2"/>
+            <img src="http://avaimg.nosdn0.126.net/img/enZpc3BkNzc2SFVJdEgvUHhDbi9jQ090TU4wUERESnpwamdyN3kwa2F4Q0k4ODZ6K0NKNzZnPT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/cE84R2xxanNVQ0tNRTFqeE1tWHNwdkZuaGhaNzZERGJGcjJwckJjazBncUdxRjdEdFF3N2dnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/WlRURnVFdlVLcHltcmJRTFlzbXJmSWExUjh5WUFKTG9OWkFQVHBrWm1nTFFib2pJaktURUhRPT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/WlRURnVFdlVLcHdUekQ2U21pTU9kRDNraFNmNmZFYS9ldmU4UndnSVA3RnZJMjBib1QwcVhBPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/ZlhLWUUxb2dDS0R6Y29yaDRremJzbmFwQ05LdTArSGJJMk5kZW1CRGU2OTJXWUY3RmRYZ293PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZlhLWUUxb2dDS0R3YnAzZElSTzFhUFNTby9RM2tTdWliTEc0TXl1NmtmWFAvOUk0eC9aL2JnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/ZlhLWUUxb2dDS0FnNTc3UlpQN2pUYlo0NkVXdmhJU3JZc05NbjlPbGY2UDR6Tlk5SDlNK3hRPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+        </div>
+        <div class="col2">
+            <img src="http://imglf6.nosdn0.126.net/img/c0xtd0xQTXZCeVFwWlQ5djBrZ0s4ZXpaS2JKR2xNam5lRVBTanNkZmZjWmxNUkloNFV3dTVRPT0.jpg?imageView&thumbnail=368y368&type=jpg"/>
+            <img src="http://imgsize.ph.126.net/?imgurl=http://img1.ph.126.net/OahB0ljJlkIJM9acfKxYLg==/6632417965978970614.jpg_64x64x0x90.jpg"/>
+            <img src="http://imglf5.nosdn0.126.net/img/dTNqaXhHemp0cHNIY3g0MGU0MzRUcDArWXl5RUlVNFM4a081WWk0TS82clpCamVxbkdXZlJBPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/b2VhYm5najhxUHI1bFFLc1MwVm5yb0g1K0FjaDNWUzFaY3pxN2xtUE0ySDI1Mk1KRVNaM2NBPT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/b2VhYm5najhxUG9wRENWczVBUzdqdGM5S2JEOHYzV2d6VVVYalo2NHRpWVNJem8vSTdjT3pnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg%7Cwatermark&type=2&text=wqkgTWlsa3lZdWtpIC8geXVraTAyMDgubG9mdGVyLmNvbQ==&font=bXN5aA==&gravity=southwest&dissolve=30&fontsize=240&dx=8&dy=10&stripmeta=0"/>
+            <img src="http://avaimg.nosdn0.126.net/img/OHdnN0VtTTJwZjJzTy95Z0diZ2ZIZ3VEa1RVQmJoRTc0bWdQYm5pOHJXN09iL3NidXkwRXFRPT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/OHdnN0VtTTJwZjJRQ2hQTFFyS1dHVmdHenBUMzVxT2kzdkVRV3JpTEQ2dmFBUDhldjB2Q3hnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/a2RaR1dQY3B6WW5UWFYrTFpFSGJtbGRDK2FHd2xrZGtORmsxREdCdjhiWHM3Kyt6MENVdGx3PT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZjhHL2g4R05GM3lJYU5jaGR6VjlscHQwQzFYdEM5Q015YjMrZ29Eb2VnZ09tRER2V3UreUlRPT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZlhLWUUxb2dDS0R3YnAzZElSTzFhUFNTby9RM2tTdWliTEc0TXl1NmtmWFAvOUk0eC9aL2JnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+        </div>
+        <div class="col3">
+            <img src="http://imglf6.nosdn0.126.net/img/cE84R2xxanNVQ0tNRTFqeE1tWHNwdkZuaGhaNzZERGJGcjJwckJjazBncUdxRjdEdFF3N2dnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/WlRURnVFdlVLcHltcmJRTFlzbXJmSWExUjh5WUFKTG9OWkFQVHBrWm1nTFFib2pJaktURUhRPT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/WlRURnVFdlVLcHdUekQ2U21pTU9kRDNraFNmNmZFYS9ldmU4UndnSVA3RnZJMjBib1QwcVhBPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/ZlhLWUUxb2dDS0R6Y29yaDRremJzbmFwQ05LdTArSGJJMk5kZW1CRGU2OTJXWUY3RmRYZ293PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/OHdnN0VtTTJwZjJRQ2hQTFFyS1dHVmdHenBUMzVxT2kzdkVRV3JpTEQ2dmFBUDhldjB2Q3hnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/ZlhLWUUxb2dDS0R6Y29yaDRremJzbmFwQ05LdTArSGJJMk5kZW1CRGU2OTJXWUY3RmRYZ293PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZlhLWUUxb2dDS0R3YnAzZElSTzFhUFNTby9RM2tTdWliTEc0TXl1NmtmWFAvOUk0eC9aL2JnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/RkpObklRN01oUWtPMVZjM1E1VWxYb25XL0UrcWZ5eW5HVHh1Mmx5NWZvYUVHRFk0QS9RNCt3PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/a2RaR1dQY3B6WW5UWFYrTFpFSGJtbGRDK2FHd2xrZGtORmsxREdCdjhiWHM3Kyt6MENVdGx3PT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZjhHL2g4R05GM3lJYU5jaGR6VjlscHQwQzFYdEM5Q015YjMrZ29Eb2VnZ09tRER2V3UreUlRPT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+        </div>
+        <div class="col4">
+            <img src="http://imglf6.nosdn0.126.net/img/ZlhLWUUxb2dDS0R3YnAzZElSTzFhUFNTby9RM2tTdWliTEc0TXl1NmtmWFAvOUk0eC9aL2JnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/RkpObklRN01oUWtPMVZjM1E1VWxYb25XL0UrcWZ5eW5HVHh1Mmx5NWZvYUVHRFk0QS9RNCt3PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf5.nosdn0.126.net/img/RkpObklRN01oUW5rMWxUTmpMMmM4QjNyTVV0U3N4NmNZNmhVMjQ0MkxPUGZRSnpVRnlhZjdnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/avaimg/M25Iakk3THVveVFRWkljWTQ5VVh3Zz09.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf5.nosdn0.126.net/img/M25Iakk3THVveVRwNkVjY1UzQ1NpQlVyZWcyZTVkdlFUR2lkMGlVdmJXR0x2TWpaNlVrOTNRPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg"/>
+            <img src="http://avaimg.nosdn0.126.net/img/K09HdkozZ0hic1VqQzFPVy85R3NseHdUdHhMVFBkL1l6THEwTFAwVjI5VTE4ZlUya1JSdTN3PT0.jpg?imageView&thumbnail=64x64&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/K09HdkozZ0hic1htS25SR2xxNnNHN2RhQk5hTm9tQXpNRTlRMDhQL0h2MWxGZEtIUVhPdEFRPT0.jpg?imageView&thumbnail=505y216&enlarge=1&type=jpg"/>
+            <img src="http://imglf6.nosdn.127.net/img/N1RMTURHbkMyMXdPdlRtNklJQ25CckNaQ1ovTG9QVndxR0M0cHRNeWNGdnd2cE9iN25WLzFRPT0.jpg?imageView&thumbnail=230y98&enlarge=1&quality=90&type=jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/a2RaR1dQY3B6WW1IcUlMcmpOYXVUdDNxNjgxQnY1eVI2dFVLUWY2V3I4NDcyRjBaRWpvcEtRPT0.jpg"/>
+            <img src="http://imglf6.nosdn0.126.net/img/ZjhHL2g4R05GM3pqZHVwNjNxbnZ2QzFIc3V4cEJHMHhLUTBMejM5d3J4VU1MNFBYK0hIeGVBPT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+            <img src="http://imglf4.nosdn0.126.net/img/a2RaR1dQY3B6WW5UWFYrTFpFSGJtbGRDK2FHd2xrZGtORmsxREdCdjhiWHM3Kyt6MENVdGx3PT0.jpg?imageView&thumbnail=164y164&enlarge=1&quality=90&type=jpg"/>
+        </div>
+    </div>
+</body>
+
+</html>

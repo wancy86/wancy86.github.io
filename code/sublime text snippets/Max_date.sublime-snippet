@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div class="component EditorText " ref="EditorText" style="width:108px;left:0px; top: 0px; position: relative; height: 22px;" filter="DATE|GREATERTHANEQUALS" dtype="|DATE" param="|01/01/1900">
+    <span class="notRequired" style="width:96px; height: 18px; cursor: text; font-size: 1em;">xxxxxxxxxxx</span>
+    <input style="width: 100px;" tabindex="0" title="Please enter the xxxxxxxxxxx." value="" id="xxxxxxxxxxx" name="xxxxxxxxxxx" maxlength="10" class="hasDatepicker" type="text">
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxdt</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

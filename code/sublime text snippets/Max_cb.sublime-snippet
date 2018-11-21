@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div style="" class="component EditorCheckBox" ref="EditorCheckBox">
+    <label style="CURSOR: default" class="notRequired" for="xxxxxx">xxxxxx</label>
+    <INPUT id="xxxxxx" title="Please click here to select." tabindex="0" name="xxxxxx" value="1" type="checkbox">
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxcb</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

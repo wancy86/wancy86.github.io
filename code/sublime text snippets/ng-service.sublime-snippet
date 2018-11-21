@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[ChapterService.get({ ACTION: 'ONE', id: id }, function(resp) {
+		if (resp.code == '000') {
+
+	          } else {
+	            console.log('xxxx', resp.msg);
+	          }
+          })
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ns</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

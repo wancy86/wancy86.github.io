@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<div class="component StaticContainer borderless" ref="StaticContainer" style="height:200px;">
+    <h3 class="handle" style="display:block;">Caption</h3>
+	
+</div>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>maxsc</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

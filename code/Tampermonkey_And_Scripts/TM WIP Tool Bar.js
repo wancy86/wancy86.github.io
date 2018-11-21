@@ -4,7 +4,8 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://wip.maxprocessing.com/*
+// @include        /^https?:\/\/139.146.176.236/
+// @include        /^https?:\/\/wip.maxprocessing.com/
 // @grant        none
 // ==/UserScript==
 
@@ -44,7 +45,7 @@
     setTimeout(function() {
         $('#top').html('').append(html);
         $('#contactinfo').html('');
-    }, 5000);
+    }, 10000);
 
     $('#editTask').die().live('click', function() {
         var TaskId = $('#TaskId').val().trim();
