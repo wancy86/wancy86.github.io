@@ -21,6 +21,9 @@
     var html =
         `
   <div style="top: 0px;left: 0px;height:60px;margin-top:30px;">
+      <select id="RecentWIP">
+        <option value="-1">Select WIP...</option>
+      </select>  
       <input type="text" id="TaskId" placeholder="WIP Number">
       <button type="button" id="editTask">GO</button>
       <select style="width: 200px;" id="ChinaTeamAssign" title="Please select developer." tabindex="0" size="1" name="ChinaTeamAssign" class="">
@@ -43,12 +46,36 @@
   `;
 
     setTimeout(function() {
-        $('#top').html('').append(html);
-        $('#contactinfo').html('');
-    }, 10000);
+        $('#shell').before(html);
+        $('#contactinfo').css('padding', '10px 0');
+    }, 200);
+
+    $('#RecentWIP').die().live('change', function() {
+        if ($(this).val() != '-1') {
+            $('#editTask').click();
+        }
+    });
+
+
+    window.RecentWIPs = [];
+    function redrawRecentWIP(){
+        var opts = '<option value="-1">Select WIP...</option>';
+        window.RecentWIPs.map(function (value, index) {
+            opts += `<option value="${value}">${value}</option>`;
+        })
+        $('#RecentWIP').html('').html(opts);
+    }
 
     $('#editTask').die().live('click', function() {
         var TaskId = $('#TaskId').val().trim();
+        $('#TaskId').val(TaskId);
+
+        window.RecentWIPs = window.RecentWIPs.reverse();
+        window.RecentWIPs.push(TaskId);
+        window.RecentWIPs = window.RecentWIPs.reverse();
+        window.RecentWIPs = window.RecentWIPs.slice(0,10);
+        redrawRecentWIP();
+
         if (TaskId !== '') {
             console.log(TaskId);
             Communication.CustomRequest('WIP_MainMenu.max?preprocess=true', function() {
@@ -141,15 +168,18 @@
     };
 
     window.listFile = function() {
-        var fl = '',fl2='';
+        var fl = '',
+            fl2 = '';
         $('#tbw_div_UplList1 tbody tr').each(function() {
             var file = $(this).find('td :input').eq(0).val();
             var version = $(this).find('td :input').eq(1).val();
             fl += file + ' ' + version + '\n';
-            fl2 += file+ '\n';
+            fl2 += file + '\n';
         });
+        console.log(fl);
         console.log(fl2);
     };
+    window.lk = window.listFile;
 
     window.logrep = () => {
         $('#sREP_ID').val(81);

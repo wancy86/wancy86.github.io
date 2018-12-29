@@ -1,0 +1,69 @@
+;= @echo off
+;= rem Call DOSKEY and use this file as the macrofile
+;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0%
+;= rem In batch mode, jump to the end of the file
+;= goto:eof
+;= Add aliases below here
+e.=explorer .
+gl=git log --oneline --all --graph --decorate  $*
+ls=ls --show-control-chars -F --color $*
+pwd=cd
+clear=cls
+history=cat "%CMDER_ROOT%\config\.history"
+unalias=alias /d $1
+vi=vim $*
+cmderr=cd /d "%CMDER_ROOT%"
+
+l=ls --show-control-chars
+la=ls -aF --show-control-chars
+ll=ls -alF --show-control-chars
+ls=ls --show-control-chars -F
+apache=net start apache2a  
+aws=d:  
+
+gadd=git add *.html *.py *.js *.css *.jpg *.md *.sql *.png  
+gs=git status  
+hub=cd /d d:\github  
+kp=taskkill /f -im "python.*"  
+pyrun=python main.py --cm  
+qba=cd /d d:/github/qba  
+qq=ssh -l ubuntu 111.230.15.39  
+runqba=python main.py --cmd=runserver  
+runs=python main.py --cmd=runserver  
+sshec2=ssh -i "AWS-key01.pem" ubuntu@ec2-52-199-11-61.ap-northeast-1.compute.amazonaws.com  
+
+adbc=adb logcat -c -b main -b events -b radio -b system -b crash  
+adblog=adb logcat -s *:E > "D:\GitHub\qqtr\adblogs\%date:~6,4%%date:~0,2%%date:~3,2%-%time:~0,2%%time:~3,2%%time:~6,2%.txt"
+addandroid=ionic cordova platform add android --no-resources  
+agcs1=svn update C:\MTStingray_agcs\
+agcs=cd /d C:\MTStingray_agcs\ && svn update C:\MTStingray_agcs\stingrayrules C:\MTStingray_agcs\sqlscripts C:\MTStingray_agcs\include C:\MTStingray_agcs\webroot C:\MTStingray_agcs\agcs  
+agd=svn update C:\MTStingray_agcs\agcs\reports\GD   
+ags=svn update C:\MTStingray_agcs\sqlscripts  
+bapk=ionic cordova build android  
+bapkr=ionic cordova build --release android  
+capk=del "D:\GitHub\qqtr\jiyixunlianmobile\platforms\android\build\outputs\apk\android-debug.apk";  
+cdagcs=cd /d C:\MTStingray_agcs  
+cdnginx=cd /d D:\Program Files\nginx-1.14.0  
+chcpbuild=cordova-hcp build D:\GitHub\qqtr\jiyixunlian-buy\www\  
+find80=netstat -ano| find ":80"
+gp=git pull  
+hcpb=cordova-hcp build  
+ibuil=del D:/GitHub/qqtr/jiyixunlianmobile/platforms/android/build/outputs/apk/android-debug.apk; ionic cordova build android;  
+jiyifa=cd /d D:\GitHub\qqtr\jiyifa  
+jyfcopy=xcopy D:\GitHub\qqtr\jiyifa\www\* D:\GitHub\qqtr\jiyixunlian-buy\android\www_jyf\ /Y /e  
+max=cd /d C:\MTStingray_agcs  
+pus=git push  
+qa=svn update  C:\MTStingray_agcs_qa\
+qqtr=cd /d D:\GitHub\qqtr\  
+rundevice=cordova run android --device  
+sb=C:\Program Files\Sublime Text 3\sublime_text.exe  
+signapk=jarsigner -verbose -keystore zehui.keystore -signedjar XiaoShuTong.apk platforms/android/build/outputs/apk/android-release-unsigned.apk zehui.keystore  
+signapkc=jarsigner -verbose -keystore zehui.keystore -signedjar XiaoShuTong.apk platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk zehui.keystore  
+signjiyifa=jarsigner -verbose -keystore jiyifa.keystore -signedjar JiYiFa.apk platforms/android/build/outputs/apk/android-release-unsigned.apk jiyifa.keystore  
+signjiyifac=jarsigner -verbose -keystore jiyifa.keystore -signedjar JiYiFa.apk platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk jiyifa.keystore  
+xiaoshutong=cd /d D:\GitHub\qqtr\xiaoshutong-android  
+xstcopy=xcopy D:\GitHub\qqtr\xiaoshutong-android\www\* D:\GitHub\qqtr\jiyixunlian-buy\android\www_xst\ /Y /e  
+xstdel=adb uninstall com.zehuiwenhua.xiaoshutong  
+xstint=adb install XiaoShuTong.apk
+xstio=xcopy D:\GitHub\qqtr\xiaoshutong-android\www\* D:\GitHub\coomark.oschina.io\hcp\android\www_xst\ /Y /e  
+xsttest=xcopy D:\GitHub\qqtr\xiaoshutong-android\www\* D:\GitHub\coomark.oschina.io\hcp\android\test\www_xst\ /Y /e

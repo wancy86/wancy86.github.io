@@ -157,22 +157,24 @@
 
 
     // Spinner time count
-    window.ShowProgress = Global.ShowProgress;
-    Global.ShowProgress = function() {
-        window.ShowProgress()
-        $('#spinner-graphic').html('<p id="spinCt" style="font-size:24px">0</p>');
-        window.spinCt = setInterval(function() {
-            var t = parseInt($('#spinCt').html())
-            $('#spinCt').html(++t)
+    setTimeout(function () {
+        window.ShowProgress = Global.ShowProgress;
+        Global.ShowProgress = function() {
+            window.ShowProgress()
+            $('#spinner-graphic').html('<p id="spinCt" style="font-size:24px">0</p>');
+            window.spinCt = setInterval(function() {
+                var t = parseInt($('#spinCt').html())
+                $('#spinCt').html(++t)
 
-        }, 1000);
-    }
-    window.HideProgress = Global.HideProgress;
-    Global.HideProgress = function() {
-        window.HideProgress()
-        console.log('Time counting: ', $('#spinCt').html());
-        $('#spinner-graphic').html('');
-        clearInterval(window.spinCt);
-    }
+            }, 1000);
+        }
+        window.HideProgress = Global.HideProgress;
+        Global.HideProgress = function() {
+            window.HideProgress()
+            console.log('Time counting: ', $('#spinCt').html());
+            $('#spinner-graphic').html('');
+            clearInterval(window.spinCt);
+        }
+    },10000);
 
 })();
