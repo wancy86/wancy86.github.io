@@ -23,7 +23,7 @@
   <div style="top: 0px;left: 0px;height:60px;margin-top:30px;">
       <select id="RecentWIP">
         <option value="-1">Select WIP...</option>
-      </select>  
+      </select>
       <input type="text" id="TaskId" placeholder="WIP Number">
       <button type="button" id="editTask">GO</button>
       <select style="width: 200px;" id="ChinaTeamAssign" title="Please select developer." tabindex="0" size="1" name="ChinaTeamAssign" class="">
@@ -45,10 +45,10 @@
   </div>
   `;
 
-    setTimeout(function() {
-        $('#shell').before(html);
-        $('#contactinfo').css('padding', '10px 0');
-    }, 200);
+    // setTimeout(function() {
+    $('#shell').before(html);
+    $('#contactinfo').css('padding', '10px 0');
+    // }, 200);
 
     $('#RecentWIP').die().live('change', function() {
         if ($(this).val() != '-1') {
@@ -57,16 +57,22 @@
         }
     });
 
+    window.RecentWIPs = localStorage.getItem('RecentWIPs');
+    if (window.RecentWIPs) {
+        window.RecentWIPs = window.RecentWIPs.split(',');
+    } else {
+        window.RecentWIPs = [];
+    }
 
-    window.RecentWIPs = [];
+    redrawRecentWIP();
 
     function redrawRecentWIP(TaskId) {
-        if (!window.RecentWIPs.includes(TaskId)) {
-            window.RecentWIPs = window.RecentWIPs.reverse();
+        if (TaskId && !window.RecentWIPs.includes(TaskId)) {
+            window.RecentWIPs.reverse();
             window.RecentWIPs.push(TaskId);
-            window.RecentWIPs = window.RecentWIPs.reverse();
-            window.RecentWIPs = window.RecentWIPs.slice(0, 10);
-            window.RecentWIPs = window.RecentWIPs.reverse();
+            window.RecentWIPs.reverse();
+            window.RecentWIPs = window.RecentWIPs.slice(0, 20);
+            localStorage.setItem('RecentWIPs', window.RecentWIPs)
         }
 
         var opts = '<option value="-1">Select WIP...</option>';

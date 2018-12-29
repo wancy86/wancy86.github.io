@@ -26,10 +26,10 @@
   </div>
   `;
 
-    setTimeout(function() {
-        $('#shell').before(html);
-        $('#contactinfo').css('padding', '10px 0');
-    }, 200);
+    // setTimeout(function() {
+    $('#shell').before(html);
+    $('#contactinfo').css('padding', '10px 0');
+    // }, 200);
 
     $('#RecentWIP').die().live('change', function() {
         if ($(this).val() != '-1') {
@@ -38,15 +38,22 @@
         }
     });
 
-    window.RecentWIPs = [];
+    window.RecentWIPs = localStorage.getItem('RecentWIPs');
+    if (window.RecentWIPs) {
+        window.RecentWIPs = window.RecentWIPs.split(',');
+    } else {
+        window.RecentWIPs = [];
+    }
+
+    redrawRecentWIP();
 
     function redrawRecentWIP(TaskId) {
         if (!window.RecentWIPs.includes(TaskId)) {
-            window.RecentWIPs = window.RecentWIPs.reverse();
+            window.RecentWIPs.reverse();
             window.RecentWIPs.push(TaskId);
-            window.RecentWIPs = window.RecentWIPs.reverse();
-            window.RecentWIPs = window.RecentWIPs.slice(0, 10);
-            window.RecentWIPs = window.RecentWIPs.reverse();
+            window.RecentWIPs.reverse();
+            window.RecentWIPs = window.RecentWIPs.slice(0, 20);
+            localStorage.setItem('RecentWIPs', window.RecentWIPs)
         }
 
         var opts = '<option value="-1">Select WIP...</option>';
