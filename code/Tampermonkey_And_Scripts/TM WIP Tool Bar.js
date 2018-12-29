@@ -52,15 +52,25 @@
 
     $('#RecentWIP').die().live('change', function() {
         if ($(this).val() != '-1') {
+            $('#TaskId').val($(this).val());
             $('#editTask').click();
         }
     });
 
 
     window.RecentWIPs = [];
-    function redrawRecentWIP(){
+
+    function redrawRecentWIP(TaskId) {
+        if (!window.RecentWIPs.includes(TaskId)) {
+            window.RecentWIPs = window.RecentWIPs.reverse();
+            window.RecentWIPs.push(TaskId);
+            window.RecentWIPs = window.RecentWIPs.reverse();
+            window.RecentWIPs = window.RecentWIPs.slice(0, 10);
+            window.RecentWIPs = window.RecentWIPs.reverse();
+        }
+
         var opts = '<option value="-1">Select WIP...</option>';
-        window.RecentWIPs.map(function (value, index) {
+        window.RecentWIPs.map(function(value, index) {
             opts += `<option value="${value}">${value}</option>`;
         })
         $('#RecentWIP').html('').html(opts);
@@ -70,11 +80,7 @@
         var TaskId = $('#TaskId').val().trim();
         $('#TaskId').val(TaskId);
 
-        window.RecentWIPs = window.RecentWIPs.reverse();
-        window.RecentWIPs.push(TaskId);
-        window.RecentWIPs = window.RecentWIPs.reverse();
-        window.RecentWIPs = window.RecentWIPs.slice(0,10);
-        redrawRecentWIP();
+        redrawRecentWIP(TaskId);
 
         if (TaskId !== '') {
             console.log(TaskId);
