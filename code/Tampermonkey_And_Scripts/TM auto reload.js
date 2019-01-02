@@ -16,10 +16,8 @@
 (function() {
     // auto login
     setTimeout(function() {
-        console.log(111);
         if (!!$(':input[name=username]').val() && !!$(':input[name=password]').val())
             $('#producer').click();
-        console.log(123);
     }, 1500);
 
     var html = `
@@ -157,24 +155,36 @@
 
 
     // Spinner time count
-    setTimeout(function () {
-        window.ShowProgress = Global.ShowProgress;
-        Global.ShowProgress = function() {
-            window.ShowProgress()
-            $('#spinner-graphic').html('<p id="spinCt" style="font-size:24px">0</p>');
-            window.spinCt = setInterval(function() {
-                var t = parseInt($('#spinCt').html())
-                $('#spinCt').html(++t)
+    setTimeout(function() {
+        if (!window.NewShowProgress) {
+            window.ShowProgress = Global.ShowProgress;
+            window.NewShowProgress = function() {
+                window.ShowProgress();
+                // console.log('ShowProgress: ',1);
+                if (!window.spinCt) {
+                    $('#spinner-graphic').html('<p id="spinCt" style="font-size:24px">0</p>');
+                    window.spinCt = setInterval(function() {
+                        var t = parseInt($('#spinCt').html());
+                        $('#spinCt').html(++t);
+                    }, 1000);
+                }
+            }
+            Global.ShowProgress = window.NewShowProgress;
+        }
 
-            }, 1000);
+        if (!window.NewHideProgress) {
+            window.HideProgress = Global.HideProgress;
+            window.NewHideProgress = function() {
+                window.HideProgress();
+                // console.log('HideProgress: ',1);
+                console.log('Time counting: ', $('#spinCt').html());
+                $('#spinner-graphic').html('');
+                clearInterval(window.spinCt);
+                delete window.spinCt;
+            }
+            Global.HideProgress = window.NewHideProgress;
         }
-        window.HideProgress = Global.HideProgress;
-        Global.HideProgress = function() {
-            window.HideProgress()
-            console.log('Time counting: ', $('#spinCt').html());
-            $('#spinner-graphic').html('');
-            clearInterval(window.spinCt);
-        }
-    },10000);
+
+    }, 10000);
 
 })();
