@@ -67,12 +67,13 @@
     redrawRecentWIP();
 
     function redrawRecentWIP(TaskId) {
-        if (TaskId && !window.RecentWIPs.includes(TaskId)) {
-            window.RecentWIPs.reverse();
-            window.RecentWIPs.push(TaskId);
-            window.RecentWIPs.reverse();
+        if (TaskId) {
+            if (window.RecentWIPs.includes(TaskId)) {
+                window.RecentWIPs.splice(window.RecentWIPs.indexOf(TaskId), 1);
+            }
+            window.RecentWIPs.unshift(TaskId);
             window.RecentWIPs = window.RecentWIPs.slice(0, 20);
-            localStorage.setItem('RecentWIPs', window.RecentWIPs)
+            localStorage.setItem('RecentWIPs', window.RecentWIPs);
         }
 
         var opts = '<option value="-1">Select WIP...</option>';

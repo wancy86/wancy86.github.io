@@ -13,23 +13,40 @@
     'use strict';
 
     setTimeout(function() {
-        $('#UserName').val('mwan');
-        $('#password').val('123123123');
+        $('#UserName').val('你的用户名');
+        $('#password').val('你的密码');
         $('#Login').click();
     }, 1000);
 
     var html =
         `
   <div style="top: 0px;left: 0px;height:60px;margin-top:30px;">
+      <select id="RecentWIP">
+        <option value="-1">Select WIP...</option>
+      </select>
       <input type="text" id="TaskId" placeholder="WIP Number">
       <button type="button" id="editTask">GO</button>
+      <select style="width: 200px;" id="ChinaTeamAssign" title="Please select developer." tabindex="0" size="1" name="ChinaTeamAssign" class="">
+          <option value="-1">Select Developer...</option>
+          <option style="background-color: #F3F781" value="129" title="Please select developer.">Mark Wan</option>
+          <option style="background-color: #F3F781" value="500" title="Please select developer.">Nash Xu</option>
+          <option style="background-color: #F3F781" value="396" title="Please select developer.">Eric Chen</option>
+          <option style="background-color: #F3F781" value="473" title="Please select developer.">Lucas Hu</option>
+          <option style="background-color: #F3F781" value="469" title="Please select developer.">Deane Ding</option>
+          <option style="background-color: #F3F781" value="387" title="Please select developer.">Abel Zhuzuoxin</option>
+          <option style="background-color: #F3F781" value="533" title="Please select developer.">Alan Liu</option>
+          <option style="background-color: #F3F781" value="512" title="Please select developer.">Tim Luo</option>
+          <option style="background-color: #F3F781" value="166" title="Please select developer.">Lion Chen</option>
+          <option style="background-color: #F3F781" value="232" title="Please select developer.">Miles Yao</option>
+          <option style="background-color: #F3F781" value="332" title="Please select developer.">Purk Wu</option>
+          <option style="background-color: #F3F781" value="110" title="Please select developer.">Ying Wang</option>
+          <option style="background-color: #F3F781" value="37" title="Please select developer. (Team Leader)">Simon Qu ♥</option>
+      </select>
   </div>
   `;
 
-    // setTimeout(function() {
     $('#shell').before(html);
     $('#contactinfo').css('padding', '10px 0');
-    // }, 200);
 
     $('#RecentWIP').die().live('change', function() {
         if ($(this).val() != '-1') {
@@ -48,12 +65,13 @@
     redrawRecentWIP();
 
     function redrawRecentWIP(TaskId) {
-        if (!window.RecentWIPs.includes(TaskId)) {
-            window.RecentWIPs.reverse();
-            window.RecentWIPs.push(TaskId);
-            window.RecentWIPs.reverse();
+        if (TaskId) {
+            if (window.RecentWIPs.includes(TaskId)) {
+                window.RecentWIPs.splice(window.RecentWIPs.indexOf(TaskId), 1);
+            }
+            window.RecentWIPs.unshift(TaskId);
             window.RecentWIPs = window.RecentWIPs.slice(0, 20);
-            localStorage.setItem('RecentWIPs', window.RecentWIPs)
+            localStorage.setItem('RecentWIPs', window.RecentWIPs);
         }
 
         var opts = '<option value="-1">Select WIP...</option>';
@@ -84,20 +102,6 @@
             $('#UserID').change();
             return;
         }
-
-        // WIP_ITEMEDIT
-        if ($('#middle').attr('vrmname') == "WIP_ITEMEDIT") {
-            $('#AssignCR').val(129);
-            $('#AssignedToDev').val($('#ChinaTeamAssign').val());
-            $('#ChinaTeamAssign').val('');
-            $('#WorkflowStepId').val(19);
-            $('#StatusTypeId').val(3);
-            if ($('#StartDate').val() == '') {
-                $('#StartDate').val((new Date()).toLocaleDateString());
-            }
-            $('#Save').click();
-        }
-
     });
 
     $('#TaskId').die().live('keypress', function(event) {
@@ -161,12 +165,13 @@
     };
 
     window.listFile = function() {
-        var fl = '',fl2='';
+        var fl = '',
+            fl2 = '';
         $('#tbw_div_UplList1 tbody tr').each(function() {
             var file = $(this).find('td :input').eq(0).val();
             var version = $(this).find('td :input').eq(1).val();
             fl += file + ' ' + version + '\n';
-            fl2 += file+ '\n';
+            fl2 += file + '\n';
         });
         console.log(fl2);
     };
