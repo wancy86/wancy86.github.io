@@ -6,6 +6,7 @@
 // @author       You
 // @include        /^https?:\/\/139.146.176.236/
 // @include        /^https?:\/\/wip.maxprocessing.com/
+// @include        /^https?:\/\/wip2.maxprocessing.com/
 // @grant        none
 // ==/UserScript==
 

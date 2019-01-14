@@ -7,6 +7,7 @@
 // @include        /^https?:\/\/localhost:\d{4}/login.max/
 // @include        /^https?:\/\/www.maxprocessing.com:\d{4}/login.max/
 // @include        /^https?:\/\/139.146.162.176/login.max/
+// @include        /^https?:\/\/10.95.254.80/login.max/
 // @include        /^https?:\/\/pcserver:5702/login.max/
 // @include        /^https?:\/\/agcs-qa.maxprocessing.com/
 // require      https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js
@@ -75,11 +76,15 @@
         Communication.LinkRequest(pageName + '.max');
         $('#resetTime').html('0');
 
-        if (window.countTime) clearInterval(window.countTime);
+        if (window.countTime) {
+            clearInterval(window.countTime);
+        }
         window.countTime = setInterval(function() {
             $('#resetTime').html(parseInt($('#resetTime').html()) + 1);
+            if (window.countTime && parseInt($('#resetTime').html()) > 999) {
+                clearInterval(window.countTime);
+            }
         }, 1000);
-
     });
 
     $('#resetTime').die().live('click', function() {
