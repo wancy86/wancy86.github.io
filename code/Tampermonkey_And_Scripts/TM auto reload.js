@@ -39,6 +39,7 @@
         var rules = [
             'Select VRM',
             'CA_Q_BasInfo',
+            'CA_Q_UM_UIM_Detail',
             'CA_Q_RateResult',
             'CA_Q_Disclosure',
             'wc_q_result',

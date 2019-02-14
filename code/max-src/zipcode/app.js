@@ -21,8 +21,11 @@ var ziplistView = {
                                     tmpTxt = value;
                                     if (cacheTxt != '' && cacheTxt == tmpTxt) {
                                         searchTxt = value;
-                                        m.redraw();
+                                    }else{
+                                        searchTxt = '';
                                     }
+                                    searchTxt = searchTxt.toUpperCase();
+                                    m.redraw();
                                 }, 400)
                             })
                         })),
