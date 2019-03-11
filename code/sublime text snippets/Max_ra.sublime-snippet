@@ -1,8 +1,8 @@
 <snippet>
     <content><![CDATA[
 <div style="" class="component EditorRadio" ref="EditorRadio">
-    <label style="" class="notRequired" for="xxxxxxx">xxxxxxx</label>
     <input id="xxxxxxx" title="Please click here to select." tabindex="0" name="xxxxxxx" value="0" type="radio">
+    <span style="" class="notRequired"><label for="xxxxxxx">xxxxxxx</label></span>
 </div>
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
