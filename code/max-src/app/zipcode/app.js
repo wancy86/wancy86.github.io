@@ -41,6 +41,7 @@ var ziplistView = {
                     m('table.table .table-striped .table-bordered', [
                         m('thead', [
                             m('th', 'State'),
+                            m('th', 'State Name'),
                             m('th', 'City'),
                             m('th', 'ZipCode'),
                             m('th', 'Territory'),
@@ -53,6 +54,7 @@ var ziplistView = {
                                 if ((searchTxt == '' && index < 15) || (searchTxt != '' && zip.searchtxt.indexOf(searchTxt) >= 0)) {
                                     return m('tr', [
                                         m('td', zip.State),
+                                        m('td', zip.StateDesc),
                                         m('td', zip.City),
                                         m('td', zip.ZipCode),
                                         m('td', zip.Territory),
