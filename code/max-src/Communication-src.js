@@ -20,7 +20,26 @@ define('Communication', ['ValidatorContainer', 'jQuery', 'Utilities', 'PageHelpe
                     Log.Add(logClassName + Place, Message, Type, Silent);
                 }
 
-                function Request() {
+                // function Request() {
+                //     try {
+                //         this.isLastRequest = false;
+                //         this.template = "";
+                //         this.cache = false;
+                //         this.method = "POST";
+                //         this.data = null;
+                //         this.id = "";
+                //         this.host = "../../";
+                //         this.onSuccess = null;
+                //         this.onError = null;
+                //         this.timeout = 180000;
+                //         this.dataType = "xml";
+                //         this.url = null;
+                //         this.requestType = "";
+                //     } catch (err) {
+                //         iLog("Request", err, Log.Type.Error);
+                //     }
+                // }
+                function Request(timeout) {
                     try {
                         this.isLastRequest = false;
                         this.template = "";
@@ -31,7 +50,7 @@ define('Communication', ['ValidatorContainer', 'jQuery', 'Utilities', 'PageHelpe
                         this.host = "../../";
                         this.onSuccess = null;
                         this.onError = null;
-                        this.timeout = 180000;
+                        this.timeout = timeout||180000;
                         this.dataType = "xml";
                         this.url = null;
                         this.requestType = "";
@@ -684,7 +703,8 @@ define('Communication', ['ValidatorContainer', 'jQuery', 'Utilities', 'PageHelpe
                                 if (!hideProgress)
                                     Global.ShowProgress(srcElement);
 
-                                request = new Request();
+                                // request = new Request();
+                                request = new Request(600000);
                                 var n = $(html).attr("VRMName");
                                 if (n == null)
                                     n = $("#middle").attr("VRMName");

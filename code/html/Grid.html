@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+    <style>
+    .container {
+        display: grid;
+        /*grid-template-columns: repeat(3, 300px);
+        grid-template-rows: repeat(3, 300px);*/
+        grid-template-columns: repeat(auto-fill, 75px);
+        grid-template-rows: repeat(auto-fill, 75px);
+        grid-gap: 1px;
+    }
+
+    .cell {
+        border: 1px solid #ccc;
+        height: 75px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cell">
+            <p>1</p>
+        </div>
+        <div class="cell">
+            <p>2</p>
+        </div>
+        <div class="cell">
+            <p>3</p>
+        </div>
+        <div class="cell">
+            <p>4</p>
+        </div>
+        <div class="cell">
+            <p>5</p>
+        </div>
+        <div class="cell">
+            <p>6</p>
+        </div>
+        <div class="cell">
+            <p>7</p>
+        </div>
+        <div class="cell">
+            <p>8</p>
+        </div>
+        <div class="cell">
+            <p>9</p>
+        </div>
+    </div>
+</body>
+
+</html>
