@@ -316,7 +316,7 @@
             'Jeremiah': '#2196F3',
             'Eric (ZhiChao) Chen': '#f058ff',
             'Lucas (Weihong) Hu': '#10e8e2',
-            'Miles Yao': '#2196F3',
+            'Miles (Guanwei) Yao': '#8BC34A',
             'Purk (Fan) Wu': '#c58e35',
             'Lion Chen': '#2196F3',
             'Abel Zhuzuoxin': '#2196F3',
