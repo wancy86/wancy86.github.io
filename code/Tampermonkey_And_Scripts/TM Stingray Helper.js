@@ -80,7 +80,7 @@
             pageName = $('#middle').attr('vrmname');
         }
         console.log(pageName);
-        Communication.LinkRequest(pageName + '.max');
+        Communication.LinkRequest(pageName + '.max', null, false, {timeout: 1000*60*60});
         $('#resetTime').html('0');
 
         if (window.countTime) {

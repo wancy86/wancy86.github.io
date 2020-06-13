@@ -21,7 +21,7 @@
 
     var html = `
 <div style="top: 0px;left: 0px;min-height:60px;margin-top:30px;">
-    <select id="RecentWIP">
+    <select id="RecentWIP" style="width:200px;">
         <option value="-1">Select WIP...</option>
     </select>
     <input type="text" id="TaskId" placeholder="WIP Number" style="with:60px;">
@@ -38,9 +38,11 @@
         <option style="background-color: #F3F781" value="387" title="Please select developer.">8. Abel Zhuzuoxin</option>
         <option style="background-color: #F3F781" value="533" title="Please select developer.">9. Alan Liu</option>
     </select>
-    <!--Report-->
-    <button type="button" id="showHistoryTool">History Tool</button>
+
     <button type="button" id="showReportTool">Report Tool</button>
+    <button type="button" id="showHistoryTool">History Tool</button>
+    <button type="button" id="showUploadInfo">Upload Info</button>
+    <!--Report-->
     <div id="ReportToolDiv" class="hideTR">
         <div style="display:flex;justify-content:center;">
             <div style="display: flex;flex-direction: column;align-items: center;width: 900px;">
@@ -64,6 +66,18 @@
                     <button id="getHistory">Get History</button>
                 </div>
                 <div id="historyHtml" style="width: 100%;margin-top: 5px;min-height: 60px;border: 1px solid #CCC;background-color:#FFF;align-items:flex-start;text-align:left;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Upload Info-->    
+    <div id="UploadInfoDiv" class="hideTR">
+        <div style="display:flex;justify-content:center;">
+            <div style="display: flex;flex-direction: column;align-items: center;width: 900px;">
+                <div style="align-self: flex-end;margin-top: 5px;">
+                    <!--<button id="filelist_btn">Upload Info</button>-->
+                </div>
+                <div id="filelist_html" style="width: 100%;margin-top: 5px;min-height: 60px;border: 1px solid #CCC;background-color:#FFF;align-items:flex-start;text-align:left;">
                 </div>
             </div>
         </div>
@@ -228,7 +242,18 @@
     $('#showHistoryTool').die().live('click', function(event) {
         $('#HistoryToolDiv').toggleClass('hideTR');
         $('#historyHtml').html('');
+
+        var hisdata = {
+            AJAX_ACTION: 'Tab_History',
+            Current_USRID: 129,
+            TaskID: $("#TaskId").val(),
+            t: (new Date()).getTime()
+        }
+        Communication.CustomRequest('https://wip.maxprocessing.com/WIP_OverViewAjax.max?' + $.param(hisdata), function(resp) {
+            $('#historyHtml').html(resp);
+        });
     });
+
     $('#getHistory').die().live('click', function(event) {
         var hisdata = {
             AJAX_ACTION: 'Tab_History',
@@ -239,6 +264,21 @@
         Communication.CustomRequest('https://wip.maxprocessing.com/WIP_OverViewAjax.max?' + $.param(hisdata), function(resp) {
             $('#historyHtml').html(resp);
         });
+    });
+
+    // ----------------------------------------------Histoty tab
+    $('#showUploadInfo').die().live('click', function(event) {
+        $('#UploadInfoDiv').toggleClass('hideTR');
+        $('#filelist_html').html('');
+
+        var fl = '', fl2 = '';
+        $('#tbw_div_UplList1 tbody tr').each(function() {
+            var file = $(this).find('td :input').eq(0).val();
+            var version = $(this).find('td :input').eq(1).val();
+            fl += file + ' ' + version + '<br>';
+            fl2 += file + '<br>';
+        });
+        $('#filelist_html').html('<p>' + fl + '<br><br>' + fl2 + '</p>');
     });
 
     // ----------------------------------------------get report info for WIP
